@@ -3,9 +3,11 @@ FROM ausbruhn87/coder-base-ubi9:latest
 USER root
 
 # Install Go 1.23
-RUN wget -q https://go.dev/dl/go1.23.4.linux-amd64.tar.gz && \
-    tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz && \
-    rm go1.23.4.linux-amd64.tar.gz
+RUN ARCH=$(uname -m) && \
+    if [ "$ARCH" = "x86_64" ]; then GOARCH="amd64"; elif [ "$ARCH" = "aarch64" ]; then GOARCH="arm64"; fi && \
+    wget -q https://go.dev/dl/go1.23.4.linux-${GOARCH}.tar.gz && \
+    tar -C /usr/local -xzf go1.23.4.linux-${GOARCH}.tar.gz && \
+    rm go1.23.4.linux-${GOARCH}.tar.gz
 
 USER coder
 
