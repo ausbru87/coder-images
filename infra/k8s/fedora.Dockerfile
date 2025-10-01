@@ -3,7 +3,9 @@ FROM ausbruhn87/coder-base-fedora:latest
 USER root
 
 # Install kubectl
-RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
+RUN ARCH=$(uname -m) && \
+    K8S_ARCH=$([ "$ARCH" = "x86_64" ] && echo "amd64" || echo "arm64") && \
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/${K8S_ARCH}/kubectl" && \
     install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     rm kubectl
 
@@ -11,9 +13,11 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
 RUN curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 # Install k9s
-RUN wget -q https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz && \
-    tar -xzf k9s_Linux_amd64.tar.gz -C /usr/local/bin k9s && \
-    rm k9s_Linux_amd64.tar.gz
+RUN ARCH=$(uname -m) && \
+    K9S_ARCH=$([ "$ARCH" = "x86_64" ] && echo "amd64" || echo "arm64") && \
+    wget -q https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_${K9S_ARCH}.tar.gz && \
+    tar -xzf k9s_Linux_${K9S_ARCH}.tar.gz -C /usr/local/bin k9s && \
+    rm k9s_Linux_${K9S_ARCH}.tar.gz
 
 # Install kubectx and kubens
 RUN wget -q https://github.com/ahmetb/kubectx/releases/latest/download/kubectx -O /usr/local/bin/kubectx && \
@@ -25,7 +29,9 @@ RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/
     mv kustomize /usr/local/bin/
 
 # Install stern (log viewer)
-RUN wget -q https://github.com/stern/stern/releases/latest/download/stern_linux_amd64 -O /usr/local/bin/stern && \
+RUN ARCH=$(uname -m) && \
+    STERN_ARCH=$([ "$ARCH" = "x86_64" ] && echo "amd64" || echo "arm64") && \
+    wget -q https://github.com/stern/stern/releases/latest/download/stern_linux_${STERN_ARCH} -O /usr/local/bin/stern && \
     chmod +x /usr/local/bin/stern
 
 USER coder
