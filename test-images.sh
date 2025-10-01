@@ -29,7 +29,7 @@ FAILED_TESTS=0
 echo -e "${BLUE}=== Testing Base Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-base-$variant:latest"
+    image="ghcr.io/ausbru87/coder-base-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "id coder" "User 'coder' exists" || ((FAILED_TESTS++))
@@ -43,7 +43,7 @@ done
 echo -e "\n${BLUE}=== Testing DataSci Python Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-datasci-python-$variant:latest"
+    image="ghcr.io/ausbru87/coder-datasci-python-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "python3 --version" "Python is installed" || ((FAILED_TESTS++))
@@ -57,7 +57,7 @@ done
 echo -e "\n${BLUE}=== Testing Dev Node Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-dev-node-$variant:latest"
+    image="ghcr.io/ausbru87/coder-dev-node-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "node --version" "Node.js is installed" || ((FAILED_TESTS++))
@@ -70,7 +70,7 @@ done
 echo -e "\n${BLUE}=== Testing Dev Go Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-dev-go-$variant:latest"
+    image="ghcr.io/ausbru87/coder-dev-go-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "go version" "Go is installed" || ((FAILED_TESTS++))
@@ -81,7 +81,7 @@ done
 echo -e "\n${BLUE}=== Testing Dev Rust Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-dev-rust-$variant:latest"
+    image="ghcr.io/ausbru87/coder-dev-rust-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "rustc --version" "Rust is installed" || ((FAILED_TESTS++))
@@ -93,7 +93,7 @@ done
 echo -e "\n${BLUE}=== Testing Dev Java Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-dev-java-$variant:latest"
+    image="ghcr.io/ausbru87/coder-dev-java-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "java --version" "Java is installed" || ((FAILED_TESTS++))
@@ -104,7 +104,7 @@ done
 echo -e "\n${BLUE}=== Testing Infra K8s Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-infra-k8s-$variant:latest"
+    image="ghcr.io/ausbru87/coder-infra-k8s-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "kubectl version --client" "kubectl is installed" || ((FAILED_TESTS++))
@@ -117,7 +117,7 @@ done
 echo -e "\n${BLUE}=== Testing Infra Terraform Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-infra-terraform-$variant:latest"
+    image="ghcr.io/ausbru87/coder-infra-terraform-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "terraform version" "Terraform is installed" || ((FAILED_TESTS++))
@@ -130,7 +130,7 @@ done
 echo -e "\n${BLUE}=== Testing Infra Ansible Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-infra-ansible-$variant:latest"
+    image="ghcr.io/ausbru87/coder-infra-ansible-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "ansible --version" "Ansible is installed" || ((FAILED_TESTS++))
@@ -140,7 +140,7 @@ done
 echo -e "\n${BLUE}=== Testing Infra Cloud Images ===${NC}"
 
 for variant in ubuntu fedora ubi9; do
-    image="ghcr.io/ausbruhn87/coder-infra-cloud-$variant:latest"
+    image="ghcr.io/ausbru87/coder-infra-cloud-$variant:latest"
     echo -e "\n${BLUE}Testing $image${NC}"
 
     test_image "$image" "aws --version" "AWS CLI is installed" || ((FAILED_TESTS++))
