@@ -8,10 +8,10 @@ RUN dnf update -y && \
     python3 \
     python3-pip \
     unzip \
-    https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
-    dnf install -y \
     less \
-    groff && \
+    https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
+    dnf config-manager --set-enabled crb && \
+    dnf install -y groff-base && \
     dnf clean all
 
 # Install AWS CLI v2
