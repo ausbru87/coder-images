@@ -10,7 +10,14 @@ RUN ARCH=$(uname -m) && \
     rm kubectl
 
 # Install Helm
-RUN curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+RUN ARCH=$(uname -m) && \
+    HELM_ARCH=$([ "$ARCH" = "x86_64" ] && echo "amd64" || echo "arm64") && \
+    HELM_VERSION=$(curl -s https://api.github.com/repos/helm/helm/releases/latest | grep tag_name | cut -d '"' -f 4) && \
+    curl -LO "https://get.helm.sh/helm-${HELM_VERSION}-linux-${HELM_ARCH}.tar.gz" && \
+    tar -zxvf "helm-${HELM_VERSION}-linux-${HELM_ARCH}.tar.gz" && \
+    mv linux-${HELM_ARCH}/helm /usr/local/bin/helm && \
+    rm -rf linux-${HELM_ARCH} "helm-${HELM_VERSION}-linux-${HELM_ARCH}.tar.gz" && \
+    helm version
 
 # Install k9s
 RUN ARCH=$(uname -m) && \

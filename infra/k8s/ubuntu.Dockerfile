@@ -21,7 +21,13 @@ RUN ARCH=$(dpkg --print-architecture) && \
     rm kubectl
 
 # Install Helm
-RUN curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+RUN ARCH=$(dpkg --print-architecture) && \
+    HELM_VERSION=$(curl -s https://api.github.com/repos/helm/helm/releases/latest | grep tag_name | cut -d '"' -f 4) && \
+    curl -LO "https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" && \
+    tar -zxvf "helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" && \
+    mv linux-${ARCH}/helm /usr/local/bin/helm && \
+    rm -rf linux-${ARCH} "helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" && \
+    helm version
 
 # Install k9s
 RUN ARCH=$(dpkg --print-architecture) && \
