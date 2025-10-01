@@ -1,4 +1,4 @@
-FROM ghcr.io/ausbru87/coder-base-ubi9:latest
+FROM ghcr.io/ausbruhn87/coder-base-ubi9:latest
 
 USER root
 

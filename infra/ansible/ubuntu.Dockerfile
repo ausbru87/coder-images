@@ -1,4 +1,4 @@
-FROM ghcr.io/ausbru87/coder-base-ubuntu:latest
+FROM ghcr.io/ausbruhn87/coder-base-ubuntu:latest
 
 USER root
 

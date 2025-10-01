@@ -21,22 +21,22 @@ build_and_push() {
 
     if [ "$variant" == "ubuntu" ]; then
         docker build -f ubuntu.Dockerfile \
-            -t ghcr.io/ausbru87/$name-$variant:$version \
-            -t ghcr.io/ausbru87/$name-$variant:latest .
-        docker push ghcr.io/ausbru87/$name-$variant:$version
-        docker push ghcr.io/ausbru87/$name-$variant:latest
+            -t ghcr.io/ausbruhn87/$name-$variant:$version \
+            -t ghcr.io/ausbruhn87/$name-$variant:latest .
+        docker push ghcr.io/ausbruhn87/$name-$variant:$version
+        docker push ghcr.io/ausbruhn87/$name-$variant:latest
     elif [ "$variant" == "fedora" ]; then
         docker build -f fedora.Dockerfile \
-            -t ghcr.io/ausbru87/$name-$variant:42 \
-            -t ghcr.io/ausbru87/$name-$variant:latest .
-        docker push ghcr.io/ausbru87/$name-$variant:42
-        docker push ghcr.io/ausbru87/$name-$variant:latest
+            -t ghcr.io/ausbruhn87/$name-$variant:42 \
+            -t ghcr.io/ausbruhn87/$name-$variant:latest .
+        docker push ghcr.io/ausbruhn87/$name-$variant:42
+        docker push ghcr.io/ausbruhn87/$name-$variant:latest
     elif [ "$variant" == "ubi9" ]; then
         docker build -f ubi9.Dockerfile \
-            -t ghcr.io/ausbru87/$name-$variant:9.6 \
-            -t ghcr.io/ausbru87/$name-$variant:latest .
-        docker push ghcr.io/ausbru87/$name-$variant:9.6
-        docker push ghcr.io/ausbru87/$name-$variant:latest
+            -t ghcr.io/ausbruhn87/$name-$variant:9.6 \
+            -t ghcr.io/ausbruhn87/$name-$variant:latest .
+        docker push ghcr.io/ausbruhn87/$name-$variant:9.6
+        docker push ghcr.io/ausbruhn87/$name-$variant:latest
     fi
 
     cd - > /dev/null
