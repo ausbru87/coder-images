@@ -185,14 +185,13 @@ jobs:
           cache-to: type=gha,mode=max,scope=dev-go-${{ matrix.variant }}
           platforms: linux/amd64,linux/arm64
 
-  # Build dev images per variant (depend on base)
-  build-dev-variants:
+  # Build dev-rust images (depend on base)
+  build-dev-rust:
     needs: build-base-images
     runs-on: ubuntu-latest
     strategy:
       matrix:
         variant: [ubuntu, ubi9]
-        type: [rust, java]
         include:
           - variant: ubuntu
             version: "24.04"
@@ -201,6 +200,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -212,18 +214,60 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push dev-${{ matrix.type }}-${{ matrix.variant }} image
+      - name: Build and push dev-rust-${{ matrix.variant }} image
         uses: docker/build-push-action@v5
         with:
-          context: ./dev/${{ matrix.type }}
-          file: ./dev/${{ matrix.type }}/${{ matrix.variant }}.Dockerfile
+          context: ./dev/rust
+          file: ./dev/rust/${{ matrix.variant }}.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-dev-${{ matrix.type }}-${{ matrix.variant }}:${{ matrix.version }}
-            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-dev-${{ matrix.type }}-${{ matrix.variant }}:latest
-          cache-from: type=gha,scope=dev-${{ matrix.type }}-${{ matrix.variant }}
-          cache-to: type=gha,mode=max,scope=dev-${{ matrix.type }}-${{ matrix.variant }}
-          platforms: linux/amd64
+            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-dev-rust-${{ matrix.variant }}:${{ matrix.version }}
+            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-dev-rust-${{ matrix.variant }}:latest
+          cache-from: type=gha,scope=dev-rust-${{ matrix.variant }}
+          cache-to: type=gha,mode=max,scope=dev-rust-${{ matrix.variant }}
+          platforms: linux/amd64,linux/arm64
+
+  # Build dev-java images (depend on base)
+  build-dev-java:
+    needs: build-base-images
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, ubi9]
+        include:
+          - variant: ubuntu
+            version: "24.04"
+          - variant: ubi9
+            version: "9.6"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push dev-java-${{ matrix.variant }} image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dev/java
+          file: ./dev/java/${{ matrix.variant }}.Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-dev-java-${{ matrix.variant }}:${{ matrix.version }}
+            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-dev-java-${{ matrix.variant }}:latest
+          cache-from: type=gha,scope=dev-java-${{ matrix.variant }}
+          cache-to: type=gha,mode=max,scope=dev-java-${{ matrix.variant }}
+          platforms: linux/amd64,linux/arm64
 
   # Build infra images per variant (depend on base)
   build-infra-variants:
