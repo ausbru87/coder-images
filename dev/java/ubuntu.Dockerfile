@@ -15,10 +15,16 @@ RUN wget -q https://services.gradle.org/distributions/gradle-8.11.1-bin.zip && \
     rm gradle-8.11.1-bin.zip && \
     ln -s /opt/gradle-8.11.1/bin/gradle /usr/local/bin/gradle
 
+USER root
+
+# Set Java environment variables dynamically based on architecture
+RUN ARCH=$(dpkg --print-architecture) && \
+    ln -sf /usr/lib/jvm/java-21-openjdk-${ARCH} /usr/lib/jvm/java-21-openjdk
+
 USER coder
 
 # Set Java environment variables
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 WORKDIR /home/coder
