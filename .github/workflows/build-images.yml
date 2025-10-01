@@ -24,12 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        variant: [ubuntu, fedora, ubi9]
+        variant: [ubuntu, ubi9]
         include:
           - variant: ubuntu
             version: "24.04"
-          - variant: fedora
-            version: "42"
           - variant: ubi9
             version: "9.6"
     steps:
@@ -56,7 +54,7 @@ jobs:
             ${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest
           cache-from: type=gha,scope=base-${{ matrix.variant }}
           cache-to: type=gha,mode=max,scope=base-${{ matrix.variant }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
 
   # Build datasci-python (depends on respective base images)
   build-datasci-python:
@@ -64,12 +62,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        variant: [ubuntu, fedora, ubi9]
+        variant: [ubuntu, ubi9]
         include:
           - variant: ubuntu
             version: "24.04"
-          - variant: fedora
-            version: "42"
           - variant: ubi9
             version: "9.6"
     steps:
@@ -96,7 +92,7 @@ jobs:
             ${{ env.DOCKER_USERNAME }}/coder-datasci-python-${{ matrix.variant }}:latest
           cache-from: type=gha,scope=datasci-python-${{ matrix.variant }}
           cache-to: type=gha,mode=max,scope=datasci-python-${{ matrix.variant }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
 
   # Build other datasci images per variant (depend on datasci-python)
   build-datasci-variants:
@@ -104,13 +100,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        variant: [ubuntu, fedora, ubi9]
+        variant: [ubuntu, ubi9]
         type: [pytorch, tensorflow, ml]
         include:
           - variant: ubuntu
             version: "24.04"
-          - variant: fedora
-            version: "42"
           - variant: ubi9
             version: "9.6"
     steps:
@@ -137,7 +131,7 @@ jobs:
             ${{ env.DOCKER_USERNAME }}/coder-datasci-${{ matrix.type }}-${{ matrix.variant }}:latest
           cache-from: type=gha,scope=datasci-${{ matrix.type }}-${{ matrix.variant }}
           cache-to: type=gha,mode=max,scope=datasci-${{ matrix.type }}-${{ matrix.variant }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
 
   # Build dev images per variant (depend on base)
   build-dev-variants:
@@ -145,13 +139,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        variant: [ubuntu, fedora, ubi9]
+        variant: [ubuntu, ubi9]
         type: [node, go, rust, java]
         include:
           - variant: ubuntu
             version: "24.04"
-          - variant: fedora
-            version: "42"
           - variant: ubi9
             version: "9.6"
     steps:
@@ -178,7 +170,7 @@ jobs:
             ${{ env.DOCKER_USERNAME }}/coder-dev-${{ matrix.type }}-${{ matrix.variant }}:latest
           cache-from: type=gha,scope=dev-${{ matrix.type }}-${{ matrix.variant }}
           cache-to: type=gha,mode=max,scope=dev-${{ matrix.type }}-${{ matrix.variant }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
 
   # Build infra images per variant (depend on base)
   build-infra-variants:
@@ -186,13 +178,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        variant: [ubuntu, fedora, ubi9]
+        variant: [ubuntu, ubi9]
         type: [k8s, terraform, ansible, cloud]
         include:
           - variant: ubuntu
             version: "24.04"
-          - variant: fedora
-            version: "42"
           - variant: ubi9
             version: "9.6"
     steps:
@@ -219,4 +209,4 @@ jobs:
             ${{ env.DOCKER_USERNAME }}/coder-infra-${{ matrix.type }}-${{ matrix.variant }}:latest
           cache-from: type=gha,scope=infra-${{ matrix.type }}-${{ matrix.variant }}
           cache-to: type=gha,mode=max,scope=infra-${{ matrix.type }}-${{ matrix.variant }}
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
