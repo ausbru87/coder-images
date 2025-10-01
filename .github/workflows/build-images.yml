@@ -19,6 +19,10 @@ env:
   DOCKER_REGISTRY: ghcr.io
   DOCKER_USERNAME: ${{ github.repository_owner }}
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-base-images:
     runs-on: ubuntu-latest
