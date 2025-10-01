@@ -1,6 +1,6 @@
 # Coder Workspace Images
 
-This repository contains Dockerfiles for building Coder workspace images across three distributions: Ubuntu 24.04, Fedora 42, and UBI 9.6.
+This repository contains Dockerfiles for building Coder workspace images across two distributions: Ubuntu 24.04 and UBI 9.6.
 
 ## Image Structure
 
@@ -99,30 +99,34 @@ Built on `coder-base-*` images for DevSecOps, SRE, and SysAdmin workflows.
 
 ## Image Naming Convention
 
-Images follow the pattern: `ausbruhn87/coder-<category>-<tool>-<distro>:<version>`
+Images are published to GitHub Container Registry and follow the pattern: `ghcr.io/ausbru87/coder-<category>-<tool>-<distro>:<version>`
 
 Examples:
-- `ausbruhn87/coder-datasci-python-ubuntu:24.04`
-- `ausbruhn87/coder-dev-go-fedora:42`
-- `ausbruhn87/coder-infra-k8s-ubi9:9.6`
+- `ghcr.io/ausbru87/coder-datasci-python-ubuntu:24.04`
+- `ghcr.io/ausbru87/coder-dev-go-ubi9:9.6`
+- `ghcr.io/ausbru87/coder-infra-k8s-ubuntu:24.04`
 
 All images also have a `:latest` tag pointing to the most recent build.
 
 ## Building Images
 
-Use the provided build script to build and push all images:
+Images are automatically built and pushed to GitHub Container Registry via GitHub Actions when changes are pushed to the `main` branch.
 
-```bash
-chmod +x build-and-push-all.sh
-./build-and-push-all.sh
-```
+### Manual Build
 
-Or build individual images:
+To build individual images locally:
 
 ```bash
 cd datasci/python
-docker build -f ubuntu.Dockerfile -t ausbruhn87/coder-datasci-python-ubuntu:24.04 .
-docker push ausbruhn87/coder-datasci-python-ubuntu:24.04
+docker build -f ubuntu.Dockerfile -t ghcr.io/ausbru87/coder-datasci-python-ubuntu:24.04 .
+```
+
+### Using Images
+
+Pull images from GitHub Container Registry:
+
+```bash
+docker pull ghcr.io/ausbru87/coder-datasci-python-ubuntu:latest
 ```
 
 ## Distribution Differences
@@ -131,22 +135,25 @@ docker push ausbruhn87/coder-datasci-python-ubuntu:24.04
 - Debian-based, uses apt package manager
 - Python 3.12
 - Most widely supported for third-party software
-
-### Fedora 42
-- RPM-based, uses dnf package manager
-- Python 3.13
-- Cutting-edge packages
+- Best for general development workloads
 
 ### UBI 9.6 (Red Hat Universal Base Image)
 - Enterprise-focused, RPM-based
 - Python 3.12
 - Suitable for environments requiring RHEL compatibility
+- Best for enterprise deployments and Red Hat ecosystems
 
 ## User Setup
 
 All images run as user `coder` (UID 1000) with passwordless sudo access.
 
+## CI/CD
+
+Images are automatically built and published using GitHub Actions:
+- **Build Workflow**: Triggered on pushes to `main` branch or manually via workflow dispatch
+- **Test Workflow**: Validates image functionality on pull requests
+- **Registry**: All images are published to GitHub Container Registry (ghcr.io)
+
 ## License
 
 These images are built using open-source tools and base images. Please refer to individual tool licenses for usage terms.
-# coder-images
