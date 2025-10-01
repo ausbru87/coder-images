@@ -1,0 +1,1696 @@
+[0;34mBuilding and pushing all coder images...[0m
+[0;34m=== Building datasci images ===[0m
+[0;32mBuilding coder-datasci-python-ubuntu:24.04...[0m
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from ubuntu.Dockerfile
+#1 transferring dockerfile: 841B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/ausbruhn87/coder-base-ubuntu:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/ausbruhn87/coder-base-ubuntu:latest@sha256:8719c8483033f2907580faf597c7fb85dde39d3bea73cfba8085f69c4acc2d6d
+#4 resolve docker.io/ausbruhn87/coder-base-ubuntu:latest@sha256:8719c8483033f2907580faf597c7fb85dde39d3bea73cfba8085f69c4acc2d6d done
+#4 DONE 0.0s
+
+#5 [2/4] RUN apt-get update &&     apt-get install -y --no-install-recommends --no-install-suggests     python3.12     python3.12-dev     python3-pip     python3.12-venv     build-essential &&     rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 [3/4] RUN pip3 install --break-system-packages --upgrade pip setuptools wheel &&     pip3 install --break-system-packages     numpy     pandas     scipy     matplotlib     seaborn     plotly     jupyter     jupyterlab     ipython     notebook     polars     pyarrow
+#6 CACHED
+
+#7 [4/4] WORKDIR /home/coder
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 exporting manifest sha256:b559ff209a85eb0bf3f3505d1b87bcda4e4fb9bf514eb465c2f9fa337c6e3d1e done
+#8 exporting config sha256:18868838ce263b62ca6e22f4d05467a0d1d9071d6032e68f3c609ad9307a9b13 done
+#8 exporting attestation manifest sha256:209465a70bf23147a65d1fb88be355716226eae0be6da8adf693d2f550538a50 done
+#8 exporting manifest list sha256:bdf4618ac0e7bc8426b4c16965f2bc4e01a377dee468fae794a8cf9ce7a3cc5b done
+#8 naming to docker.io/ausbruhn87/coder-datasci-python-ubuntu:24.04 done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-python-ubuntu:24.04 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-python-ubuntu:latest done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-python-ubuntu:latest done
+#8 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/a7mdhu6b6bvqnaff4n6z6ids9
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-python-ubuntu]
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+013a4222416c: Waiting
+4f4fb700ef54: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+458e064b4ce6: Waiting
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+013a4222416c: Waiting
+4f4fb700ef54: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+458e064b4ce6: Waiting
+013a4222416c: Waiting
+4f4fb700ef54: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+458e064b4ce6: Waiting
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+013a4222416c: Waiting
+4f4fb700ef54: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+458e064b4ce6: Waiting
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+013a4222416c: Waiting
+4f4fb700ef54: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+458e064b4ce6: Waiting
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+013a4222416c: Waiting
+4f4fb700ef54: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+458e064b4ce6: Waiting
+4f4fb700ef54: Waiting
+59a5d47f84c3: Layer already exists
+6f19702ffd63: Waiting
+f7d9c0bdef95: Layer already exists
+458e064b4ce6: Layer already exists
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+013a4222416c: Waiting
+4f4fb700ef54: Layer already exists
+6f19702ffd63: Layer already exists
+249fe4e7414e: Layer already exists
+4ec84188817c: Layer already exists
+e9c4f54f96f3: Waiting
+e9c4f54f96f3: Layer already exists
+013a4222416c: Pushed
+24.04: digest: sha256:bdf4618ac0e7bc8426b4c16965f2bc4e01a377dee468fae794a8cf9ce7a3cc5b size: 856
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-python-ubuntu]
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+f7d9c0bdef95: Waiting
+013a4222416c: Waiting
+59a5d47f84c3: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+458e064b4ce6: Waiting
+e9c4f54f96f3: Waiting
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+f7d9c0bdef95: Waiting
+013a4222416c: Waiting
+59a5d47f84c3: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+458e064b4ce6: Waiting
+e9c4f54f96f3: Waiting
+249fe4e7414e: Waiting
+4ec84188817c: Waiting
+f7d9c0bdef95: Waiting
+013a4222416c: Waiting
+59a5d47f84c3: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+458e064b4ce6: Waiting
+e9c4f54f96f3: Waiting
+013a4222416c: Waiting
+59a5d47f84c3: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+458e064b4ce6: Waiting
+e9c4f54f96f3: Layer already exists
+249fe4e7414e: Waiting
+4ec84188817c: Layer already exists
+f7d9c0bdef95: Waiting
+013a4222416c: Waiting
+59a5d47f84c3: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Layer already exists
+458e064b4ce6: Layer already exists
+249fe4e7414e: Waiting
+f7d9c0bdef95: Waiting
+59a5d47f84c3: Layer already exists
+4f4fb700ef54: Layer already exists
+249fe4e7414e: Layer already exists
+f7d9c0bdef95: Waiting
+013a4222416c: Waiting
+f7d9c0bdef95: Layer already exists
+013a4222416c: Already exists
+latest: digest: sha256:bdf4618ac0e7bc8426b4c16965f2bc4e01a377dee468fae794a8cf9ce7a3cc5b size: 856
+[0;32mBuilding coder-datasci-python-fedora:24.04...[0m
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from fedora.Dockerfile
+#1 transferring dockerfile: 721B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/ausbruhn87/coder-base-fedora:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/ausbruhn87/coder-base-fedora:latest@sha256:341d2eaa8fa7e384641680f658fe1b77a61287977e0f1a6f73925523ec2f533f
+#4 resolve docker.io/ausbruhn87/coder-base-fedora:latest@sha256:341d2eaa8fa7e384641680f658fe1b77a61287977e0f1a6f73925523ec2f533f done
+#4 DONE 0.0s
+
+#5 [3/4] RUN pip3 install --upgrade pip setuptools wheel &&     pip3 install     numpy     pandas     scipy     matplotlib     seaborn     plotly     jupyter     jupyterlab     ipython     notebook     polars     pyarrow
+#5 CACHED
+
+#6 [2/4] RUN dnf update -y &&     dnf install -y     python3.13     python3.13-devel     python3-pip     gcc     gcc-c++     make &&     dnf clean all
+#6 CACHED
+
+#7 [4/4] WORKDIR /home/coder
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 exporting manifest sha256:d29ce1248eabef641a5038f2ab0be75b30953feeb064a1e8e56e94d06f70f94a done
+#8 exporting config sha256:098d14716030ce4473d6dd71ffb812c5afbf8a20d20e45a93d9ceec76bb708f6 done
+#8 exporting attestation manifest sha256:040c6c0be741bc060e40776c06115639883d1a9f86a8a7ca1e77f3d39585ea38 done
+#8 exporting manifest list sha256:19aa35a5535e2d237aa5c6599e172f55c053031bb01deb00f6f93ad92c54eed5 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-python-fedora:42 done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-python-fedora:42 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-python-fedora:latest done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-python-fedora:latest done
+#8 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/a82lb7gzedsviyxwm6mwqzz4g
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-python-fedora]
+360691203002: Waiting
+519b495971f8: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+519b495971f8: Waiting
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+519b495971f8: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+519b495971f8: Layer already exists
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Layer already exists
+8e2d43dca143: Layer already exists
+744c098761cb: Layer already exists
+1e3e546e4ad7: Waiting
+1e3e546e4ad7: Layer already exists
+4f4fb700ef54: Layer already exists
+360691203002: Pushed
+42: digest: sha256:19aa35a5535e2d237aa5c6599e172f55c053031bb01deb00f6f93ad92c54eed5 size: 856
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-python-fedora]
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+4f4fb700ef54: Waiting
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+4f4fb700ef54: Waiting
+360691203002: Waiting
+4f4fb700ef54: Waiting
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+230c0c4422c9: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+4f4fb700ef54: Waiting
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Layer already exists
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+4f4fb700ef54: Waiting
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+519b495971f8: Layer already exists
+8e2d43dca143: Layer already exists
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+4f4fb700ef54: Layer already exists
+744c098761cb: Layer already exists
+1e3e546e4ad7: Waiting
+360691203002: Waiting
+1e3e546e4ad7: Layer already exists
+360691203002: Already exists
+latest: digest: sha256:19aa35a5535e2d237aa5c6599e172f55c053031bb01deb00f6f93ad92c54eed5 size: 856
+[0;32mBuilding coder-datasci-python-ubi9:24.04...[0m
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from ubi9.Dockerfile
+#1 transferring dockerfile: 717B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/ausbruhn87/coder-base-ubi9:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/ausbruhn87/coder-base-ubi9:latest@sha256:d860ebe31d1f9afa6f05ee27b031a812daeeeff2f9c1ca1fb9767337bc23f61a
+#4 resolve docker.io/ausbruhn87/coder-base-ubi9:latest@sha256:d860ebe31d1f9afa6f05ee27b031a812daeeeff2f9c1ca1fb9767337bc23f61a done
+#4 DONE 0.0s
+
+#5 [2/4] RUN dnf update -y &&     dnf install -y     python3.12     python3.12-devel     python3-pip     gcc     gcc-c++     make &&     dnf clean all
+#5 CACHED
+
+#6 [3/4] RUN pip3 install --upgrade pip setuptools wheel &&     pip3 install     numpy     pandas     scipy     matplotlib     seaborn     plotly     jupyter     jupyterlab     ipython     notebook     polars     pyarrow
+#6 CACHED
+
+#7 [4/4] WORKDIR /home/coder
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 exporting manifest sha256:59bfc63cfdbf86867ffc638ff99a86a29d924eaeedc7feea41693e83309c795b done
+#8 exporting config sha256:a2df4a736d49d89bfd6737e38343ec6c317d2bfbe9bf9ef60ae1deae9ce9d3a8 done
+#8 exporting attestation manifest sha256:48c7e658744c309908092f7a764cf1cef93b1681b23defad87924b5ccbc5e16e done
+#8 exporting manifest list sha256:d61db0e2565a57f54bc769f3521f3fb591223f3cbc8405848987b0425671d89d done
+#8 naming to docker.io/ausbruhn87/coder-datasci-python-ubi9:9.6 done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-python-ubi9:9.6 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-python-ubi9:latest done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-python-ubi9:latest done
+#8 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/tdu02stjs532rwpkklfzz39yq
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-python-ubi9]
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+1f9d87bd0913: Waiting
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+4f4fb700ef54: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+bb67a37dde05: Layer already exists
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+23ac6ba71483: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Layer already exists
+1f9d87bd0913: Waiting
+2b64288c2167: Layer already exists
+4fc87cc79443: Waiting
+23ac6ba71483: Layer already exists
+4f4fb700ef54: Waiting
+1f9d87bd0913: Waiting
+4fc87cc79443: Layer already exists
+4f4fb700ef54: Layer already exists
+1f9d87bd0913: Layer already exists
+517d6b91e431: Pushed
+9.6: digest: sha256:d61db0e2565a57f54bc769f3521f3fb591223f3cbc8405848987b0425671d89d size: 856
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-python-ubi9]
+2b64288c2167: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+bb67a37dde05: Waiting
+4fc87cc79443: Waiting
+1f9d87bd0913: Waiting
+4fc87cc79443: Waiting
+1f9d87bd0913: Waiting
+2b64288c2167: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+bb67a37dde05: Waiting
+4fc87cc79443: Waiting
+1f9d87bd0913: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+bb67a37dde05: Waiting
+4fc87cc79443: Layer already exists
+1f9d87bd0913: Waiting
+2b64288c2167: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+1f9d87bd0913: Waiting
+2b64288c2167: Waiting
+23ac6ba71483: Waiting
+517d6b91e431: Waiting
+4f4fb700ef54: Layer already exists
+a656f425c648: Waiting
+bb67a37dde05: Layer already exists
+23ac6ba71483: Layer already exists
+517d6b91e431: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+2b64288c2167: Layer already exists
+1f9d87bd0913: Waiting
+517d6b91e431: Waiting
+a656f425c648: Layer already exists
+1f9d87bd0913: Layer already exists
+517d6b91e431: Waiting
+517d6b91e431: Already exists
+latest: digest: sha256:d61db0e2565a57f54bc769f3521f3fb591223f3cbc8405848987b0425671d89d size: 856
+[0;32mBuilding coder-datasci-pytorch-ubuntu:24.04...[0m
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from ubuntu.Dockerfile
+#1 transferring dockerfile: 549B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/ausbruhn87/coder-datasci-python-ubuntu:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/ausbruhn87/coder-datasci-python-ubuntu:latest@sha256:bdf4618ac0e7bc8426b4c16965f2bc4e01a377dee468fae794a8cf9ce7a3cc5b
+#4 resolve docker.io/ausbruhn87/coder-datasci-python-ubuntu:latest@sha256:bdf4618ac0e7bc8426b4c16965f2bc4e01a377dee468fae794a8cf9ce7a3cc5b done
+#4 DONE 0.0s
+
+#5 [3/4] RUN pip3 install --break-system-packages     transformers     accelerate     datasets     tokenizers     sentencepiece     huggingface-hub     tensorboard     torchmetrics     lightning
+#5 CACHED
+
+#6 [2/4] RUN pip3 install --break-system-packages     torch     torchvision     torchaudio     --index-url https://download.pytorch.org/whl/cpu
+#6 CACHED
+
+#7 [4/4] WORKDIR /home/coder
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 exporting manifest sha256:50860020829d7e354a182fb7ce41feb79f1d2fc10aafb6553679f714b1085204 done
+#8 exporting config sha256:64d3e66955b9196ea9b586e738916cc8e683a81f876f26020bb86a4c7c050d1c done
+#8 exporting attestation manifest sha256:617c8c1f1b299580b16ef1e4e6602523788c3e81cfa038bbdc99b52c750d9412 done
+#8 exporting manifest list sha256:0deb38c0bf8aa7e494effb1e03b1cd83fd1b0733d2837c48c2fc81e131ad13e6 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-pytorch-ubuntu:24.04 done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-pytorch-ubuntu:24.04 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-pytorch-ubuntu:latest done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-pytorch-ubuntu:latest done
+#8 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/yilck195u8ahyddeqensyvsei
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-pytorch-ubuntu]
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+79c5b3ff5731: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+79c5b3ff5731: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+79c5b3ff5731: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+79c5b3ff5731: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+79c5b3ff5731: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Layer already exists
+458e064b4ce6: Waiting
+f7d9c0bdef95: Waiting
+458e064b4ce6: Layer already exists
+79c5b3ff5731: Waiting
+4f4fb700ef54: Layer already exists
+249fe4e7414e: Layer already exists
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+59a5d47f84c3: Waiting
+6f19702ffd63: Waiting
+59a5d47f84c3: Layer already exists
+6f19702ffd63: Layer already exists
+f7d9c0bdef95: Layer already exists
+79c5b3ff5731: Layer already exists
+e9c4f54f96f3: Layer already exists
+d25e919ed2da: Layer already exists
+068f901ead9f: Pushed
+24.04: digest: sha256:0deb38c0bf8aa7e494effb1e03b1cd83fd1b0733d2837c48c2fc81e131ad13e6 size: 856
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-pytorch-ubuntu]
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Waiting
+79c5b3ff5731: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Waiting
+79c5b3ff5731: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Waiting
+79c5b3ff5731: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Waiting
+79c5b3ff5731: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Layer already exists
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Waiting
+79c5b3ff5731: Waiting
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Waiting
+59a5d47f84c3: Layer already exists
+249fe4e7414e: Layer already exists
+458e064b4ce6: Layer already exists
+79c5b3ff5731: Waiting
+4f4fb700ef54: Layer already exists
+f7d9c0bdef95: Layer already exists
+4ec84188817c: Layer already exists
+e9c4f54f96f3: Waiting
+d25e919ed2da: Waiting
+068f901ead9f: Already exists
+79c5b3ff5731: Waiting
+79c5b3ff5731: Waiting
+e9c4f54f96f3: Layer already exists
+d25e919ed2da: Layer already exists
+79c5b3ff5731: Layer already exists
+latest: digest: sha256:0deb38c0bf8aa7e494effb1e03b1cd83fd1b0733d2837c48c2fc81e131ad13e6 size: 856
+[0;32mBuilding coder-datasci-pytorch-fedora:24.04...[0m
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from fedora.Dockerfile
+#1 transferring dockerfile: 501B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/ausbruhn87/coder-datasci-python-fedora:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/ausbruhn87/coder-datasci-python-fedora:latest@sha256:19aa35a5535e2d237aa5c6599e172f55c053031bb01deb00f6f93ad92c54eed5
+#4 resolve docker.io/ausbruhn87/coder-datasci-python-fedora:latest@sha256:19aa35a5535e2d237aa5c6599e172f55c053031bb01deb00f6f93ad92c54eed5 done
+#4 DONE 0.0s
+
+#5 [2/4] RUN pip3 install     torch     torchvision     torchaudio     --index-url https://download.pytorch.org/whl/cpu
+#5 CACHED
+
+#6 [3/4] RUN pip3 install     transformers     accelerate     datasets     tokenizers     sentencepiece     huggingface-hub     tensorboard     torchmetrics     lightning
+#6 CACHED
+
+#7 [4/4] WORKDIR /home/coder
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 exporting manifest sha256:775cca4cf036671ef99b59ff372f95ca72261d161c9af6cac93ad3435f298237 done
+#8 exporting config sha256:28b56c2e5f700ccb19661b5567915cb7f12c42adf6863e2b8eea5fe68daa44da done
+#8 exporting attestation manifest sha256:d8feaf1461c2ae2daa82457e65dd494ad35f620c8deb70cb546073bfb95905a1 done
+#8 exporting manifest list sha256:fd4f90bbac82813c9a97beba86c545470790cfc8a437828e09e1dd9387cfd446 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-pytorch-fedora:42 done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-pytorch-fedora:42 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-pytorch-fedora:latest done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-pytorch-fedora:latest done
+#8 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/3xf32dhtb49vr1h1awd6sxuac
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-pytorch-fedora]
+cb0c7d4f895e: Waiting
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8bf93bf1d479: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+758945470118: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8bf93bf1d479: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+758945470118: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8bf93bf1d479: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+758945470118: Waiting
+1e3e546e4ad7: Waiting
+8bf93bf1d479: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+758945470118: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Waiting
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Layer already exists
+8e2d43dca143: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8bf93bf1d479: Waiting
+4f4fb700ef54: Waiting
+230c0c4422c9: Waiting
+758945470118: Waiting
+8e2d43dca143: Layer already exists
+744c098761cb: Layer already exists
+1e3e546e4ad7: Waiting
+8bf93bf1d479: Waiting
+4f4fb700ef54: Layer already exists
+230c0c4422c9: Layer already exists
+758945470118: Layer already exists
+1e3e546e4ad7: Waiting
+8bf93bf1d479: Layer already exists
+1e3e546e4ad7: Layer already exists
+cb0c7d4f895e: Pushed
+42: digest: sha256:fd4f90bbac82813c9a97beba86c545470790cfc8a437828e09e1dd9387cfd446 size: 856
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-pytorch-fedora]
+744c098761cb: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Waiting
+8bf93bf1d479: Waiting
+758945470118: Waiting
+1e3e546e4ad7: Waiting
+1e3e546e4ad7: Waiting
+744c098761cb: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Waiting
+8bf93bf1d479: Waiting
+758945470118: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Waiting
+8bf93bf1d479: Waiting
+758945470118: Waiting
+1e3e546e4ad7: Waiting
+744c098761cb: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Waiting
+8bf93bf1d479: Waiting
+758945470118: Waiting
+1e3e546e4ad7: Waiting
+744c098761cb: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Waiting
+8bf93bf1d479: Waiting
+758945470118: Waiting
+1e3e546e4ad7: Waiting
+744c098761cb: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+cb0c7d4f895e: Waiting
+519b495971f8: Layer already exists
+8bf93bf1d479: Layer already exists
+758945470118: Layer already exists
+1e3e546e4ad7: Waiting
+744c098761cb: Waiting
+4f4fb700ef54: Layer already exists
+8e2d43dca143: Layer already exists
+230c0c4422c9: Layer already exists
+cb0c7d4f895e: Already exists
+1e3e546e4ad7: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Layer already exists
+744c098761cb: Layer already exists
+latest: digest: sha256:fd4f90bbac82813c9a97beba86c545470790cfc8a437828e09e1dd9387cfd446 size: 856
+[0;32mBuilding coder-datasci-pytorch-ubi9:24.04...[0m
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from ubi9.Dockerfile
+#1 transferring dockerfile: 497B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/ausbruhn87/coder-datasci-python-ubi9:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/4] FROM docker.io/ausbruhn87/coder-datasci-python-ubi9:latest@sha256:d61db0e2565a57f54bc769f3521f3fb591223f3cbc8405848987b0425671d89d
+#4 resolve docker.io/ausbruhn87/coder-datasci-python-ubi9:latest@sha256:d61db0e2565a57f54bc769f3521f3fb591223f3cbc8405848987b0425671d89d done
+#4 DONE 0.0s
+
+#5 [2/4] RUN pip3 install     torch     torchvision     torchaudio     --index-url https://download.pytorch.org/whl/cpu
+#5 CACHED
+
+#6 [3/4] RUN pip3 install     transformers     accelerate     datasets     tokenizers     sentencepiece     huggingface-hub     tensorboard     torchmetrics     lightning
+#6 CACHED
+
+#7 [4/4] WORKDIR /home/coder
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 exporting manifest sha256:2d5af4a808890b4526b99a5fe6a7dcae769eac36c32dc4b4b5c0fca40f6f441c done
+#8 exporting config sha256:2da257091c56e2280dab8d24e6b0600e25c488e37e479d4c3424a80954197c0f done
+#8 exporting attestation manifest sha256:9ffa2315d10436785cd51acab32dd7a02d49bbe6f6b4bebf15c646962323c776 done
+#8 exporting manifest list sha256:abfa2b55b1590b70c5ab7b729dd6f0eb722d762f82db20babe8e311ca1521251 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-pytorch-ubi9:9.6 done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-pytorch-ubi9:9.6 done
+#8 naming to docker.io/ausbruhn87/coder-datasci-pytorch-ubi9:latest done
+#8 unpacking to docker.io/ausbruhn87/coder-datasci-pytorch-ubi9:latest done
+#8 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ymj4sldpucf36xn14r9gke4cx
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-pytorch-ubi9]
+3aec8e7ccc7e: Waiting
+bb67a37dde05: Waiting
+1f9d87bd0913: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+2b64288c2167: Waiting
+23ac6ba71483: Waiting
+4fc87cc79443: Waiting
+23ac6ba71483: Waiting
+4fc87cc79443: Waiting
+3aec8e7ccc7e: Waiting
+bb67a37dde05: Waiting
+1f9d87bd0913: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+2b64288c2167: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+2b64288c2167: Waiting
+23ac6ba71483: Waiting
+4fc87cc79443: Waiting
+3aec8e7ccc7e: Waiting
+bb67a37dde05: Waiting
+1f9d87bd0913: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+23ac6ba71483: Waiting
+4fc87cc79443: Waiting
+3aec8e7ccc7e: Waiting
+bb67a37dde05: Waiting
+1f9d87bd0913: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+2b64288c2167: Waiting
+23ac6ba71483: Layer already exists
+4fc87cc79443: Waiting
+3aec8e7ccc7e: Waiting
+bb67a37dde05: Waiting
+1f9d87bd0913: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+4f4fb700ef54: Waiting
+a656f425c648: Waiting
+2b64288c2167: Layer already exists
+bb67a37dde05: Layer already exists
+1f9d87bd0913: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+4f4fb700ef54: Layer already exists
+a656f425c648: Waiting
+4fc87cc79443: Layer already exists
+1f9d87bd0913: Layer already exists
+20259bf5ac8a: Layer already exists
+abe65703c5c5: Layer already exists
+a656f425c648: Layer already exists
+3aec8e7ccc7e: Pushed
+9.6: digest: sha256:abfa2b55b1590b70c5ab7b729dd6f0eb722d762f82db20babe8e311ca1521251 size: 856
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-pytorch-ubi9]
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+23ac6ba71483: Waiting
+3aec8e7ccc7e: Waiting
+4f4fb700ef54: Waiting
+3aec8e7ccc7e: Waiting
+4f4fb700ef54: Waiting
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+23ac6ba71483: Waiting
+3aec8e7ccc7e: Waiting
+4f4fb700ef54: Waiting
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+23ac6ba71483: Waiting
+3aec8e7ccc7e: Waiting
+4f4fb700ef54: Waiting
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+23ac6ba71483: Waiting
+3aec8e7ccc7e: Waiting
+4f4fb700ef54: Waiting
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+23ac6ba71483: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+23ac6ba71483: Waiting
+3aec8e7ccc7e: Waiting
+4f4fb700ef54: Waiting
+bb67a37dde05: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+3aec8e7ccc7e: Waiting
+4f4fb700ef54: Waiting
+bb67a37dde05: Layer already exists
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+20259bf5ac8a: Waiting
+abe65703c5c5: Waiting
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+23ac6ba71483: Waiting
+2b64288c2167: Waiting
+4fc87cc79443: Waiting
+20259bf5ac8a: Layer already exists
+abe65703c5c5: Layer already exists
+a656f425c648: Waiting
+1f9d87bd0913: Waiting
+23ac6ba71483: Layer already exists
+3aec8e7ccc7e: Waiting
+4f4fb700ef54: Layer already exists
+a656f425c648: Layer already exists
+1f9d87bd0913: Waiting
+3aec8e7ccc7e: Already exists
+2b64288c2167: Layer already exists
+4fc87cc79443: Waiting
+1f9d87bd0913: Layer already exists
+4fc87cc79443: Waiting
+4fc87cc79443: Layer already exists
+latest: digest: sha256:abfa2b55b1590b70c5ab7b729dd6f0eb722d762f82db20babe8e311ca1521251 size: 856
+[0;32mBuilding coder-datasci-tensorflow-ubuntu:24.04...[0m
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from ubuntu.Dockerfile
+#1 transferring dockerfile: 294B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/ausbruhn87/coder-datasci-python-ubuntu:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/ausbruhn87/coder-datasci-python-ubuntu:latest@sha256:bdf4618ac0e7bc8426b4c16965f2bc4e01a377dee468fae794a8cf9ce7a3cc5b
+#4 resolve docker.io/ausbruhn87/coder-datasci-python-ubuntu:latest@sha256:bdf4618ac0e7bc8426b4c16965f2bc4e01a377dee468fae794a8cf9ce7a3cc5b done
+#4 CACHED
+
+#5 [2/3] RUN pip3 install --break-system-packages     tensorflow     keras     tensorboard     tensorflow-datasets     keras-tuner
+#5 0.343 Defaulting to user installation because normal site-packages is not writeable
+#5 0.489 Collecting tensorflow
+#5 0.589   Downloading tensorflow-2.20.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (4.5 kB)
+#5 0.608 Collecting keras
+#5 0.619   Downloading keras-3.11.3-py3-none-any.whl.metadata (5.9 kB)
+#5 0.644 Collecting tensorboard
+#5 0.656   Downloading tensorboard-2.20.0-py3-none-any.whl.metadata (1.8 kB)
+#5 0.676 Collecting tensorflow-datasets
+#5 0.720   Downloading tensorflow_datasets-4.9.9-py3-none-any.whl.metadata (11 kB)
+#5 0.768 Collecting keras-tuner
+#5 0.784   Downloading keras_tuner-1.4.7-py3-none-any.whl.metadata (5.4 kB)
+#5 0.810 Collecting absl-py>=1.0.0 (from tensorflow)
+#5 0.821   Downloading absl_py-2.3.1-py3-none-any.whl.metadata (3.3 kB)
+#5 0.890 Collecting astunparse>=1.6.0 (from tensorflow)
+#5 0.905   Downloading astunparse-1.6.3-py2.py3-none-any.whl.metadata (4.4 kB)
+#5 0.929 Collecting flatbuffers>=24.3.25 (from tensorflow)
+#5 0.938   Downloading flatbuffers-25.9.23-py2.py3-none-any.whl.metadata (875 bytes)
+#5 0.959 Collecting gast!=0.5.0,!=0.5.1,!=0.5.2,>=0.2.1 (from tensorflow)
+#5 0.969   Downloading gast-0.6.0-py3-none-any.whl.metadata (1.3 kB)
+#5 0.986 Collecting google_pasta>=0.1.1 (from tensorflow)
+#5 1.005   Downloading google_pasta-0.2.0-py3-none-any.whl.metadata (814 bytes)
+#5 1.025 Collecting libclang>=13.0.0 (from tensorflow)
+#5 1.035   Downloading libclang-18.1.1-py2.py3-none-manylinux2014_aarch64.whl.metadata (5.2 kB)
+#5 1.051 Collecting opt_einsum>=2.3.2 (from tensorflow)
+#5 1.060   Downloading opt_einsum-3.4.0-py3-none-any.whl.metadata (6.3 kB)
+#5 1.063 Requirement already satisfied: packaging in /usr/lib/python3/dist-packages (from tensorflow) (24.0)
+#5 1.145 Collecting protobuf>=5.28.0 (from tensorflow)
+#5 1.154   Downloading protobuf-6.32.1-cp39-abi3-manylinux2014_aarch64.whl.metadata (593 bytes)
+#5 1.155 Requirement already satisfied: requests<3,>=2.21.0 in ./.local/lib/python3.12/site-packages (from tensorflow) (2.32.5)
+#5 1.156 Requirement already satisfied: setuptools in ./.local/lib/python3.12/site-packages (from tensorflow) (80.9.0)
+#5 1.156 Requirement already satisfied: six>=1.12.0 in ./.local/lib/python3.12/site-packages (from tensorflow) (1.17.0)
+#5 1.169 Collecting termcolor>=1.1.0 (from tensorflow)
+#5 1.182   Downloading termcolor-3.1.0-py3-none-any.whl.metadata (6.4 kB)
+#5 1.184 Requirement already satisfied: typing_extensions>=3.6.6 in ./.local/lib/python3.12/site-packages (from tensorflow) (4.15.0)
+#5 1.231 Collecting wrapt>=1.11.0 (from tensorflow)
+#5 1.243   Downloading wrapt-1.17.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (6.4 kB)
+#5 1.440 Collecting grpcio<2.0,>=1.24.3 (from tensorflow)
+#5 1.451   Downloading grpcio-1.75.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl.metadata (3.7 kB)
+#5 1.455 Requirement already satisfied: numpy>=1.26.0 in ./.local/lib/python3.12/site-packages (from tensorflow) (2.3.3)
+#5 1.475 Collecting h5py>=3.11.0 (from tensorflow)
+#5 1.491   Downloading h5py-3.14.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (2.7 kB)
+#5 1.510 Collecting ml_dtypes<1.0.0,>=0.5.1 (from tensorflow)
+#5 1.520   Downloading ml_dtypes-0.5.3-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (8.9 kB)
+#5 1.545 Collecting markdown>=2.6.8 (from tensorboard)
+#5 1.558   Downloading markdown-3.9-py3-none-any.whl.metadata (5.1 kB)
+#5 1.560 Requirement already satisfied: pillow in ./.local/lib/python3.12/site-packages (from tensorboard) (11.3.0)
+#5 1.582 Collecting tensorboard-data-server<0.8.0,>=0.7.0 (from tensorboard)
+#5 1.592   Downloading tensorboard_data_server-0.7.2-py3-none-any.whl.metadata (1.1 kB)
+#5 1.613 Collecting werkzeug>=1.0.1 (from tensorboard)
+#5 1.623   Downloading werkzeug-3.1.3-py3-none-any.whl.metadata (3.7 kB)
+#5 1.626 Requirement already satisfied: charset_normalizer<4,>=2 in ./.local/lib/python3.12/site-packages (from requests<3,>=2.21.0->tensorflow) (3.4.3)
+#5 1.626 Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.12/site-packages (from requests<3,>=2.21.0->tensorflow) (3.10)
+#5 1.626 Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.12/site-packages (from requests<3,>=2.21.0->tensorflow) (2.5.0)
+#5 1.626 Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.12/site-packages (from requests<3,>=2.21.0->tensorflow) (2025.8.3)
+#5 1.655 Collecting rich (from keras)
+#5 1.669   Downloading rich-14.1.0-py3-none-any.whl.metadata (18 kB)
+#5 1.683 Collecting namex (from keras)
+#5 1.694   Downloading namex-0.1.0-py3-none-any.whl.metadata (322 bytes)
+#5 1.747 Collecting optree (from keras)
+#5 1.758   Downloading optree-0.17.0-cp312-cp312-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl.metadata (33 kB)
+#5 1.792 Collecting array_record>=0.5.0 (from tensorflow-datasets)
+#5 1.803   Downloading array_record-0.8.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl.metadata (1.1 kB)
+#5 1.821 Collecting dm-tree (from tensorflow-datasets)
+#5 1.832   Downloading dm_tree-0.1.9-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (2.4 kB)
+#5 1.848 Collecting etils>=1.9.1 (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 1.857   Downloading etils-1.13.0-py3-none-any.whl.metadata (6.5 kB)
+#5 1.876 Collecting immutabledict (from tensorflow-datasets)
+#5 1.886   Downloading immutabledict-4.2.1-py3-none-any.whl.metadata (3.5 kB)
+#5 1.899 Collecting promise (from tensorflow-datasets)
+#5 1.911   Downloading promise-2.3.tar.gz (19 kB)
+#5 1.918   Preparing metadata (setup.py): started
+#5 2.082   Preparing metadata (setup.py): finished with status 'done'
+#5 2.088 Requirement already satisfied: psutil in ./.local/lib/python3.12/site-packages (from tensorflow-datasets) (7.1.0)
+#5 2.088 Requirement already satisfied: pyarrow in ./.local/lib/python3.12/site-packages (from tensorflow-datasets) (21.0.0)
+#5 2.106 Collecting simple_parsing (from tensorflow-datasets)
+#5 2.118   Downloading simple_parsing-0.1.7-py3-none-any.whl.metadata (7.3 kB)
+#5 2.132 Collecting tensorflow-metadata (from tensorflow-datasets)
+#5 2.140   Downloading tensorflow_metadata-1.17.2-py3-none-any.whl.metadata (2.5 kB)
+#5 2.154 Collecting toml (from tensorflow-datasets)
+#5 2.162   Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)
+#5 2.185 Collecting tqdm (from tensorflow-datasets)
+#5 2.194   Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+#5 2.220 Collecting kt-legacy (from keras-tuner)
+#5 2.229   Downloading kt_legacy-1.0.5-py3-none-any.whl.metadata (221 bytes)
+#5 2.231 Requirement already satisfied: wheel<1.0,>=0.23.0 in ./.local/lib/python3.12/site-packages (from astunparse>=1.6.0->tensorflow) (0.45.1)
+#5 2.248 Collecting einops (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 2.259   Downloading einops-0.8.1-py3-none-any.whl.metadata (13 kB)
+#5 2.282 Collecting fsspec (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 2.291   Downloading fsspec-2025.9.0-py3-none-any.whl.metadata (10 kB)
+#5 2.323 Collecting importlib_resources (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 2.343   Downloading importlib_resources-6.5.2-py3-none-any.whl.metadata (3.9 kB)
+#5 2.363 Collecting zipp (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 2.374   Downloading zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+#5 2.387 Requirement already satisfied: MarkupSafe>=2.1.1 in ./.local/lib/python3.12/site-packages (from werkzeug>=1.0.1->tensorboard) (3.0.3)
+#5 2.390 Requirement already satisfied: attrs>=18.2.0 in ./.local/lib/python3.12/site-packages (from dm-tree->tensorflow-datasets) (25.3.0)
+#5 2.422 Collecting markdown-it-py>=2.2.0 (from rich->keras)
+#5 2.430   Downloading markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+#5 2.433 Requirement already satisfied: pygments<3.0.0,>=2.13.0 in ./.local/lib/python3.12/site-packages (from rich->keras) (2.19.2)
+#5 2.444 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->keras)
+#5 2.452   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+#5 2.468 Collecting docstring-parser<1.0,>=0.15 (from simple_parsing->tensorflow-datasets)
+#5 2.478   Downloading docstring_parser-0.17.0-py3-none-any.whl.metadata (3.5 kB)
+#5 2.499 Collecting googleapis-common-protos<2,>=1.56.4 (from tensorflow-metadata->tensorflow-datasets)
+#5 2.509   Downloading googleapis_common_protos-1.70.0-py3-none-any.whl.metadata (9.3 kB)
+#5 2.547 Downloading tensorflow-2.20.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (259.5 MB)
+#5 19.49    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 259.5/259.5 MB 15.4 MB/s  0:00:16
+#5 19.51 Downloading tensorboard-2.20.0-py3-none-any.whl (5.5 MB)
+#5 19.88    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 14.9 MB/s  0:00:00
+#5 19.90 Downloading grpcio-1.75.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (6.2 MB)
+#5 20.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 14.0 MB/s  0:00:00
+#5 20.38 Downloading ml_dtypes-0.5.3-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (5.0 MB)
+#5 20.78    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.0/5.0 MB 12.3 MB/s  0:00:00
+#5 20.83 Downloading tensorboard_data_server-0.7.2-py3-none-any.whl (2.4 kB)
+#5 20.86 Downloading keras-3.11.3-py3-none-any.whl (1.4 MB)
+#5 20.98    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 11.6 MB/s  0:00:00
+#5 20.99 Downloading tensorflow_datasets-4.9.9-py3-none-any.whl (5.3 MB)
+#5 21.54    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 9.9 MB/s  0:00:00
+#5 21.55 Downloading keras_tuner-1.4.7-py3-none-any.whl (129 kB)
+#5 21.58 Downloading absl_py-2.3.1-py3-none-any.whl (135 kB)
+#5 21.63 Downloading array_record-0.8.1-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (2.4 MB)
+#5 21.93    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 8.0 MB/s  0:00:00
+#5 21.94 Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+#5 21.96 Downloading etils-1.13.0-py3-none-any.whl (170 kB)
+#5 21.98 Downloading flatbuffers-25.9.23-py2.py3-none-any.whl (30 kB)
+#5 21.99 Downloading gast-0.6.0-py3-none-any.whl (21 kB)
+#5 22.01 Downloading google_pasta-0.2.0-py3-none-any.whl (57 kB)
+#5 22.03 Downloading h5py-3.14.0-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (4.7 MB)
+#5 22.57    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 8.7 MB/s  0:00:00
+#5 22.58 Downloading libclang-18.1.1-py2.py3-none-manylinux2014_aarch64.whl (23.8 MB)
+#5 26.10    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.8/23.8 MB 6.8 MB/s  0:00:03
+#5 26.12 Downloading markdown-3.9-py3-none-any.whl (107 kB)
+#5 26.15 Downloading opt_einsum-3.4.0-py3-none-any.whl (71 kB)
+#5 26.17 Downloading protobuf-6.32.1-cp39-abi3-manylinux2014_aarch64.whl (322 kB)
+#5 26.22 Downloading termcolor-3.1.0-py3-none-any.whl (7.7 kB)
+#5 26.24 Downloading werkzeug-3.1.3-py3-none-any.whl (224 kB)
+#5 26.28 Downloading wrapt-1.17.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (88 kB)
+#5 26.30 Downloading dm_tree-0.1.9-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (147 kB)
+#5 26.33 Downloading einops-0.8.1-py3-none-any.whl (64 kB)
+#5 26.34 Downloading fsspec-2025.9.0-py3-none-any.whl (199 kB)
+#5 26.39 Downloading immutabledict-4.2.1-py3-none-any.whl (4.7 kB)
+#5 26.40 Downloading importlib_resources-6.5.2-py3-none-any.whl (37 kB)
+#5 26.42 Downloading kt_legacy-1.0.5-py3-none-any.whl (9.6 kB)
+#5 26.43 Downloading namex-0.1.0-py3-none-any.whl (5.9 kB)
+#5 26.44 Downloading optree-0.17.0-cp312-cp312-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl (365 kB)
+#5 26.51 Downloading rich-14.1.0-py3-none-any.whl (243 kB)
+#5 26.56 Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+#5 26.59 Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+#5 26.60 Downloading simple_parsing-0.1.7-py3-none-any.whl (112 kB)
+#5 26.63 Downloading docstring_parser-0.17.0-py3-none-any.whl (36 kB)
+#5 26.65 Downloading tensorflow_metadata-1.17.2-py3-none-any.whl (31 kB)
+#5 26.66 Downloading googleapis_common_protos-1.70.0-py3-none-any.whl (294 kB)
+#5 26.71 Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+#5 26.73 Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+#5 26.75 Downloading zipp-3.23.0-py3-none-any.whl (10 kB)
+#5 27.00 Building wheels for collected packages: promise
+#5 27.00   DEPRECATION: Building 'promise' using the legacy setup.py bdist_wheel mechanism, which will be removed in a future version. pip 25.3 will enforce this behaviour change. A possible replacement is to use the standardized build interface by setting the `--use-pep517` option, (possibly combined with `--no-build-isolation`), or adding a `pyproject.toml` file to the source tree of 'promise'. Discussion can be found at https://github.com/pypa/pip/issues/6334
+#5 27.00   Building wheel for promise (setup.py): started
+#5 27.13   Building wheel for promise (setup.py): finished with status 'done'
+#5 27.13   Created wheel for promise: filename=promise-2.3-py3-none-any.whl size=21581 sha256=ce798d56ae3f348496e528025f18b19e2503b06d9d323c81b1d44680328905c9
+#5 27.13   Stored in directory: /tmp/pip-ephem-wheel-cache-59l9mzvd/wheels/e7/e6/28/864bdfee5339dbd6ddcb5a186286a8e217648ec198bdf0097d
+#5 27.13 Successfully built promise
+#5 27.28 Installing collected packages: namex, libclang, kt-legacy, flatbuffers, zipp, wrapt, werkzeug, tqdm, toml, termcolor, tensorboard-data-server, protobuf, promise, optree, opt_einsum, ml_dtypes, mdurl, markdown, importlib_resources, immutabledict, h5py, grpcio, google_pasta, gast, fsspec, etils, einops, docstring-parser, astunparse, absl-py, tensorboard, simple_parsing, markdown-it-py, googleapis-common-protos, dm-tree, tensorflow-metadata, rich, keras, array_record, tensorflow, keras-tuner, tensorflow-datasets
+#5 27.60   WARNING: The script tqdm is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 27.60   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 27.82   WARNING: The script markdown_py is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 27.82   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 28.43   WARNING: The script tensorboard is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 28.43   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 28.50   WARNING: The script markdown-it is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 28.50   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 34.45   WARNING: The scripts import_pb_to_tensorboard, saved_model_cli, tensorboard, tf_upgrade_v2, tflite_convert and toco are installed in '/home/coder/.local/bin' which is not on PATH.
+#5 34.45   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 35.19   WARNING: The script tfds is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 35.19   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 35.26 
+#5 35.27 Successfully installed absl-py-2.3.1 array_record-0.8.1 astunparse-1.6.3 dm-tree-0.1.9 docstring-parser-0.17.0 einops-0.8.1 etils-1.13.0 flatbuffers-25.9.23 fsspec-2025.9.0 gast-0.6.0 google_pasta-0.2.0 googleapis-common-protos-1.70.0 grpcio-1.75.1 h5py-3.14.0 immutabledict-4.2.1 importlib_resources-6.5.2 keras-3.11.3 keras-tuner-1.4.7 kt-legacy-1.0.5 libclang-18.1.1 markdown-3.9 markdown-it-py-4.0.0 mdurl-0.1.2 ml_dtypes-0.5.3 namex-0.1.0 opt_einsum-3.4.0 optree-0.17.0 promise-2.3 protobuf-6.32.1 rich-14.1.0 simple_parsing-0.1.7 tensorboard-2.20.0 tensorboard-data-server-0.7.2 tensorflow-2.20.0 tensorflow-datasets-4.9.9 tensorflow-metadata-1.17.2 termcolor-3.1.0 toml-0.10.2 tqdm-4.67.1 werkzeug-3.1.3 wrapt-1.17.3 zipp-3.23.0
+#5 DONE 35.6s
+
+#6 [3/3] WORKDIR /home/coder
+#6 DONE 0.1s
+
+#7 exporting to image
+#7 exporting layers
+#7 exporting layers 21.3s done
+#7 exporting manifest sha256:b5a67b0fb194110abb580276a918918f056c490cd0708dc2517bc9fa5830ddcc
+#7 exporting manifest sha256:b5a67b0fb194110abb580276a918918f056c490cd0708dc2517bc9fa5830ddcc done
+#7 exporting config sha256:f79313c3592241546db69cc994f21ccfde1cb585d0201213ce43deeb53621e8d done
+#7 exporting attestation manifest sha256:b387cf7a0f53abfc5e1a4d22960d558c25439b49160d44bac98beabfc8066269 done
+#7 exporting manifest list sha256:dca5d71390d33a3a9dc2aa6bd8998688317f0f4f9bbfb5b5a30ac51186bda378 done
+#7 naming to docker.io/ausbruhn87/coder-datasci-tensorflow-ubuntu:24.04 done
+#7 unpacking to docker.io/ausbruhn87/coder-datasci-tensorflow-ubuntu:24.04
+#7 unpacking to docker.io/ausbruhn87/coder-datasci-tensorflow-ubuntu:24.04 4.5s done
+#7 naming to docker.io/ausbruhn87/coder-datasci-tensorflow-ubuntu:latest done
+#7 unpacking to docker.io/ausbruhn87/coder-datasci-tensorflow-ubuntu:latest done
+#7 DONE 25.9s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/p59pok4yztgp26a2ysf3fbtx1
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-tensorflow-ubuntu]
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+6f19702ffd63: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+f7d9c0bdef95: Waiting
+e9c4f54f96f3: Waiting
+568c504495e2: Waiting
+6f19702ffd63: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+f7d9c0bdef95: Waiting
+e9c4f54f96f3: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+6f19702ffd63: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+f7d9c0bdef95: Waiting
+e9c4f54f96f3: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+f7d9c0bdef95: Waiting
+e9c4f54f96f3: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+6f19702ffd63: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+6f19702ffd63: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+f7d9c0bdef95: Waiting
+e9c4f54f96f3: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+458e064b4ce6: Waiting
+6f19702ffd63: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+f7d9c0bdef95: Waiting
+e9c4f54f96f3: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+4ec84188817c: Waiting
+6f19702ffd63: Waiting
+4f4fb700ef54: Waiting
+249fe4e7414e: Waiting
+f7d9c0bdef95: Waiting
+e9c4f54f96f3: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+4ec84188817c: Waiting
+458e064b4ce6: Waiting
+4f4fb700ef54: Layer already exists
+249fe4e7414e: Layer already exists
+f7d9c0bdef95: Waiting
+e9c4f54f96f3: Waiting
+59a5d47f84c3: Layer already exists
+4ec84188817c: Layer already exists
+458e064b4ce6: Layer already exists
+6f19702ffd63: Layer already exists
+f7d9c0bdef95: Waiting
+e9c4f54f96f3: Waiting
+f7d9c0bdef95: Layer already exists
+e9c4f54f96f3: Layer already exists
+f772c2f1d6d5: Pushed
+568c504495e2: Pushed
+24.04: digest: sha256:dca5d71390d33a3a9dc2aa6bd8998688317f0f4f9bbfb5b5a30ac51186bda378 size: 856
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-tensorflow-ubuntu]
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Waiting
+e9c4f54f96f3: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Waiting
+e9c4f54f96f3: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Waiting
+e9c4f54f96f3: Waiting
+4f4fb700ef54: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Waiting
+e9c4f54f96f3: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Waiting
+4ec84188817c: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+458e064b4ce6: Layer already exists
+e9c4f54f96f3: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Waiting
+f7d9c0bdef95: Layer already exists
+4ec84188817c: Waiting
+568c504495e2: Waiting
+59a5d47f84c3: Waiting
+249fe4e7414e: Waiting
+e9c4f54f96f3: Waiting
+4f4fb700ef54: Waiting
+6f19702ffd63: Layer already exists
+4ec84188817c: Layer already exists
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+568c504495e2: Waiting
+f772c2f1d6d5: Waiting
+59a5d47f84c3: Layer already exists
+249fe4e7414e: Layer already exists
+e9c4f54f96f3: Waiting
+4f4fb700ef54: Layer already exists
+f772c2f1d6d5: Waiting
+e9c4f54f96f3: Waiting
+568c504495e2: Waiting
+e9c4f54f96f3: Layer already exists
+568c504495e2: Layer already exists
+f772c2f1d6d5: Already exists
+latest: digest: sha256:dca5d71390d33a3a9dc2aa6bd8998688317f0f4f9bbfb5b5a30ac51186bda378 size: 856
+[0;32mBuilding coder-datasci-tensorflow-fedora:24.04...[0m
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from fedora.Dockerfile
+#1 transferring dockerfile: 270B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/ausbruhn87/coder-datasci-python-fedora:latest
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/ausbruhn87/coder-datasci-python-fedora:latest@sha256:19aa35a5535e2d237aa5c6599e172f55c053031bb01deb00f6f93ad92c54eed5
+#4 resolve docker.io/ausbruhn87/coder-datasci-python-fedora:latest@sha256:19aa35a5535e2d237aa5c6599e172f55c053031bb01deb00f6f93ad92c54eed5 done
+#4 CACHED
+
+#5 [2/3] RUN pip3 install     tensorflow     keras     tensorboard     tensorflow-datasets     keras-tuner
+#5 0.256 Defaulting to user installation because normal site-packages is not writeable
+#5 0.374 Collecting tensorflow
+#5 0.466   Downloading tensorflow-2.20.0-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (4.5 kB)
+#5 0.489 Collecting keras
+#5 0.498   Downloading keras-3.11.3-py3-none-any.whl.metadata (5.9 kB)
+#5 0.514 Collecting tensorboard
+#5 0.526   Downloading tensorboard-2.20.0-py3-none-any.whl.metadata (1.8 kB)
+#5 0.542 Collecting tensorflow-datasets
+#5 0.552   Downloading tensorflow_datasets-4.9.9-py3-none-any.whl.metadata (11 kB)
+#5 0.583 Collecting keras-tuner
+#5 0.595   Downloading keras_tuner-1.4.7-py3-none-any.whl.metadata (5.4 kB)
+#5 0.616 Collecting absl-py>=1.0.0 (from tensorflow)
+#5 0.629   Downloading absl_py-2.3.1-py3-none-any.whl.metadata (3.3 kB)
+#5 0.645 Collecting astunparse>=1.6.0 (from tensorflow)
+#5 0.655   Downloading astunparse-1.6.3-py2.py3-none-any.whl.metadata (4.4 kB)
+#5 0.671 Collecting flatbuffers>=24.3.25 (from tensorflow)
+#5 0.689   Downloading flatbuffers-25.9.23-py2.py3-none-any.whl.metadata (875 bytes)
+#5 0.703 Collecting gast!=0.5.0,!=0.5.1,!=0.5.2,>=0.2.1 (from tensorflow)
+#5 0.711   Downloading gast-0.6.0-py3-none-any.whl.metadata (1.3 kB)
+#5 0.726 Collecting google_pasta>=0.1.1 (from tensorflow)
+#5 0.735   Downloading google_pasta-0.2.0-py3-none-any.whl.metadata (814 bytes)
+#5 0.755 Collecting libclang>=13.0.0 (from tensorflow)
+#5 0.766   Downloading libclang-18.1.1-py2.py3-none-manylinux2014_aarch64.whl.metadata (5.2 kB)
+#5 0.783 Collecting opt_einsum>=2.3.2 (from tensorflow)
+#5 0.794   Downloading opt_einsum-3.4.0-py3-none-any.whl.metadata (6.3 kB)
+#5 0.795 Requirement already satisfied: packaging in ./.local/lib/python3.13/site-packages (from tensorflow) (25.0)
+#5 0.873 Collecting protobuf>=5.28.0 (from tensorflow)
+#5 0.892   Downloading protobuf-6.32.1-cp39-abi3-manylinux2014_aarch64.whl.metadata (593 bytes)
+#5 0.893 Requirement already satisfied: requests<3,>=2.21.0 in ./.local/lib/python3.13/site-packages (from tensorflow) (2.32.5)
+#5 0.893 Requirement already satisfied: setuptools in ./.local/lib/python3.13/site-packages (from tensorflow) (80.9.0)
+#5 0.893 Requirement already satisfied: six>=1.12.0 in ./.local/lib/python3.13/site-packages (from tensorflow) (1.17.0)
+#5 0.905 Collecting termcolor>=1.1.0 (from tensorflow)
+#5 0.915   Downloading termcolor-3.1.0-py3-none-any.whl.metadata (6.4 kB)
+#5 0.916 Requirement already satisfied: typing_extensions>=3.6.6 in ./.local/lib/python3.13/site-packages (from tensorflow) (4.15.0)
+#5 0.957 Collecting wrapt>=1.11.0 (from tensorflow)
+#5 0.972   Downloading wrapt-1.17.3-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl.metadata (6.4 kB)
+#5 1.150 Collecting grpcio<2.0,>=1.24.3 (from tensorflow)
+#5 1.160   Downloading grpcio-1.75.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl.metadata (3.7 kB)
+#5 1.163 Requirement already satisfied: numpy>=1.26.0 in ./.local/lib/python3.13/site-packages (from tensorflow) (2.3.3)
+#5 1.185 Collecting h5py>=3.11.0 (from tensorflow)
+#5 1.195   Downloading h5py-3.14.0-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (2.7 kB)
+#5 1.214 Collecting ml_dtypes<1.0.0,>=0.5.1 (from tensorflow)
+#5 1.227   Downloading ml_dtypes-0.5.3-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl.metadata (8.9 kB)
+#5 1.246 Collecting markdown>=2.6.8 (from tensorboard)
+#5 1.263   Downloading markdown-3.9-py3-none-any.whl.metadata (5.1 kB)
+#5 1.264 Requirement already satisfied: pillow in ./.local/lib/python3.13/site-packages (from tensorboard) (11.3.0)
+#5 1.284 Collecting tensorboard-data-server<0.8.0,>=0.7.0 (from tensorboard)
+#5 1.299   Downloading tensorboard_data_server-0.7.2-py3-none-any.whl.metadata (1.1 kB)
+#5 1.317 Collecting werkzeug>=1.0.1 (from tensorboard)
+#5 1.327   Downloading werkzeug-3.1.3-py3-none-any.whl.metadata (3.7 kB)
+#5 1.331 Requirement already satisfied: charset_normalizer<4,>=2 in ./.local/lib/python3.13/site-packages (from requests<3,>=2.21.0->tensorflow) (3.4.3)
+#5 1.331 Requirement already satisfied: idna<4,>=2.5 in ./.local/lib/python3.13/site-packages (from requests<3,>=2.21.0->tensorflow) (3.10)
+#5 1.331 Requirement already satisfied: urllib3<3,>=1.21.1 in ./.local/lib/python3.13/site-packages (from requests<3,>=2.21.0->tensorflow) (2.5.0)
+#5 1.331 Requirement already satisfied: certifi>=2017.4.17 in ./.local/lib/python3.13/site-packages (from requests<3,>=2.21.0->tensorflow) (2025.8.3)
+#5 1.355 Collecting rich (from keras)
+#5 1.365   Downloading rich-14.1.0-py3-none-any.whl.metadata (18 kB)
+#5 1.380 Collecting namex (from keras)
+#5 1.405   Downloading namex-0.1.0-py3-none-any.whl.metadata (322 bytes)
+#5 1.441 Collecting optree (from keras)
+#5 1.451   Downloading optree-0.17.0-cp313-cp313-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl.metadata (33 kB)
+#5 1.477 Collecting array_record>=0.5.0 (from tensorflow-datasets)
+#5 1.490   Downloading array_record-0.8.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl.metadata (1.1 kB)
+#5 1.519 Collecting dm-tree (from tensorflow-datasets)
+#5 1.534   Downloading dm_tree-0.1.9-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl.metadata (2.4 kB)
+#5 1.550 Collecting etils>=1.9.1 (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 1.562   Downloading etils-1.13.0-py3-none-any.whl.metadata (6.5 kB)
+#5 1.581 Collecting immutabledict (from tensorflow-datasets)
+#5 1.599   Downloading immutabledict-4.2.1-py3-none-any.whl.metadata (3.5 kB)
+#5 1.611 Collecting promise (from tensorflow-datasets)
+#5 1.621   Downloading promise-2.3.tar.gz (19 kB)
+#5 1.627   Preparing metadata (setup.py): started
+#5 1.743   Preparing metadata (setup.py): finished with status 'done'
+#5 1.751 Requirement already satisfied: psutil in ./.local/lib/python3.13/site-packages (from tensorflow-datasets) (7.1.0)
+#5 1.751 Requirement already satisfied: pyarrow in ./.local/lib/python3.13/site-packages (from tensorflow-datasets) (21.0.0)
+#5 1.766 Collecting simple_parsing (from tensorflow-datasets)
+#5 1.775   Downloading simple_parsing-0.1.7-py3-none-any.whl.metadata (7.3 kB)
+#5 1.793 Collecting tensorflow-metadata (from tensorflow-datasets)
+#5 1.803   Downloading tensorflow_metadata-1.17.2-py3-none-any.whl.metadata (2.5 kB)
+#5 1.817 Collecting toml (from tensorflow-datasets)
+#5 1.827   Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)
+#5 1.845 Collecting tqdm (from tensorflow-datasets)
+#5 1.854   Downloading tqdm-4.67.1-py3-none-any.whl.metadata (57 kB)
+#5 1.900 Collecting kt-legacy (from keras-tuner)
+#5 1.908   Downloading kt_legacy-1.0.5-py3-none-any.whl.metadata (221 bytes)
+#5 1.910 Requirement already satisfied: wheel<1.0,>=0.23.0 in ./.local/lib/python3.13/site-packages (from astunparse>=1.6.0->tensorflow) (0.45.1)
+#5 1.926 Collecting einops (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 1.944   Downloading einops-0.8.1-py3-none-any.whl.metadata (13 kB)
+#5 1.960 Collecting fsspec (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 1.972   Downloading fsspec-2025.9.0-py3-none-any.whl.metadata (10 kB)
+#5 1.996 Collecting importlib_resources (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 2.013   Downloading importlib_resources-6.5.2-py3-none-any.whl.metadata (3.9 kB)
+#5 2.028 Collecting zipp (from etils[edc,enp,epath,epy,etree]>=1.9.1; python_version >= "3.11"->tensorflow-datasets)
+#5 2.045   Downloading zipp-3.23.0-py3-none-any.whl.metadata (3.6 kB)
+#5 2.055 Requirement already satisfied: MarkupSafe>=2.1.1 in ./.local/lib/python3.13/site-packages (from werkzeug>=1.0.1->tensorboard) (3.0.3)
+#5 2.059 Requirement already satisfied: attrs>=18.2.0 in ./.local/lib/python3.13/site-packages (from dm-tree->tensorflow-datasets) (25.3.0)
+#5 2.088 Collecting markdown-it-py>=2.2.0 (from rich->keras)
+#5 2.105   Downloading markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+#5 2.107 Requirement already satisfied: pygments<3.0.0,>=2.13.0 in ./.local/lib/python3.13/site-packages (from rich->keras) (2.19.2)
+#5 2.119 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->keras)
+#5 2.127   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+#5 2.157 Collecting docstring-parser<1.0,>=0.15 (from simple_parsing->tensorflow-datasets)
+#5 2.171   Downloading docstring_parser-0.17.0-py3-none-any.whl.metadata (3.5 kB)
+#5 2.192 Collecting googleapis-common-protos<2,>=1.56.4 (from tensorflow-metadata->tensorflow-datasets)
+#5 2.202   Downloading googleapis_common_protos-1.70.0-py3-none-any.whl.metadata (9.3 kB)
+#5 2.242 Downloading tensorflow-2.20.0-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (259.7 MB)
+#5 17.18    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 259.7/259.7 MB 17.4 MB/s  0:00:14
+#5 17.20 Downloading tensorboard-2.20.0-py3-none-any.whl (5.5 MB)
+#5 17.74    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 10.2 MB/s  0:00:00
+#5 17.75 Downloading grpcio-1.75.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (6.2 MB)
+#5 18.35    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.2/6.2 MB 10.5 MB/s  0:00:00
+#5 18.36 Downloading ml_dtypes-0.5.3-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl (5.0 MB)
+#5 18.71    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.0/5.0 MB 14.6 MB/s  0:00:00
+#5 18.73 Downloading tensorboard_data_server-0.7.2-py3-none-any.whl (2.4 kB)
+#5 18.74 Downloading keras-3.11.3-py3-none-any.whl (1.4 MB)
+#5 18.82    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 16.7 MB/s  0:00:00
+#5 18.84 Downloading tensorflow_datasets-4.9.9-py3-none-any.whl (5.3 MB)
+#5 19.14    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 18.0 MB/s  0:00:00
+#5 19.15 Downloading keras_tuner-1.4.7-py3-none-any.whl (129 kB)
+#5 19.17 Downloading absl_py-2.3.1-py3-none-any.whl (135 kB)
+#5 19.19 Downloading array_record-0.8.1-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.whl (2.4 MB)
+#5 19.46    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 8.5 MB/s  0:00:00
+#5 19.48 Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+#5 19.49 Downloading etils-1.13.0-py3-none-any.whl (170 kB)
+#5 19.53 Downloading flatbuffers-25.9.23-py2.py3-none-any.whl (30 kB)
+#5 19.54 Downloading gast-0.6.0-py3-none-any.whl (21 kB)
+#5 19.56 Downloading google_pasta-0.2.0-py3-none-any.whl (57 kB)
+#5 19.58 Downloading h5py-3.14.0-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (4.7 MB)
+#5 20.62    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 4.5 MB/s  0:00:01
+#5 20.64 Downloading libclang-18.1.1-py2.py3-none-manylinux2014_aarch64.whl (23.8 MB)
+#5 23.66    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.8/23.8 MB 8.0 MB/s  0:00:03
+#5 23.67 Downloading markdown-3.9-py3-none-any.whl (107 kB)
+#5 23.70 Downloading opt_einsum-3.4.0-py3-none-any.whl (71 kB)
+#5 23.73 Downloading protobuf-6.32.1-cp39-abi3-manylinux2014_aarch64.whl (322 kB)
+#5 23.78 Downloading termcolor-3.1.0-py3-none-any.whl (7.7 kB)
+#5 23.79 Downloading werkzeug-3.1.3-py3-none-any.whl (224 kB)
+#5 23.84 Downloading wrapt-1.17.3-cp313-cp313-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl (88 kB)
+#5 23.86 Downloading dm_tree-0.1.9-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl (147 kB)
+#5 23.89 Downloading einops-0.8.1-py3-none-any.whl (64 kB)
+#5 23.90 Downloading fsspec-2025.9.0-py3-none-any.whl (199 kB)
+#5 23.94 Downloading immutabledict-4.2.1-py3-none-any.whl (4.7 kB)
+#5 23.95 Downloading importlib_resources-6.5.2-py3-none-any.whl (37 kB)
+#5 23.96 Downloading kt_legacy-1.0.5-py3-none-any.whl (9.6 kB)
+#5 23.98 Downloading namex-0.1.0-py3-none-any.whl (5.9 kB)
+#5 23.99 Downloading optree-0.17.0-cp313-cp313-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl (368 kB)
+#5 24.05 Downloading rich-14.1.0-py3-none-any.whl (243 kB)
+#5 24.08 Downloading markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+#5 24.10 Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+#5 24.11 Downloading simple_parsing-0.1.7-py3-none-any.whl (112 kB)
+#5 24.16 Downloading docstring_parser-0.17.0-py3-none-any.whl (36 kB)
+#5 24.18 Downloading tensorflow_metadata-1.17.2-py3-none-any.whl (31 kB)
+#5 24.19 Downloading googleapis_common_protos-1.70.0-py3-none-any.whl (294 kB)
+#5 24.24 Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+#5 24.25 Downloading tqdm-4.67.1-py3-none-any.whl (78 kB)
+#5 24.27 Downloading zipp-3.23.0-py3-none-any.whl (10 kB)
+#5 24.47 Building wheels for collected packages: promise
+#5 24.47   DEPRECATION: Building 'promise' using the legacy setup.py bdist_wheel mechanism, which will be removed in a future version. pip 25.3 will enforce this behaviour change. A possible replacement is to use the standardized build interface by setting the `--use-pep517` option, (possibly combined with `--no-build-isolation`), or adding a `pyproject.toml` file to the source tree of 'promise'. Discussion can be found at https://github.com/pypa/pip/issues/6334
+#5 24.47   Building wheel for promise (setup.py): started
+#5 24.58   Building wheel for promise (setup.py): finished with status 'done'
+#5 24.58   Created wheel for promise: filename=promise-2.3-py3-none-any.whl size=21509 sha256=ccd9a092ae612a370e3a97e29aae995d3f23288fa1caf687fe67378852b7eb13
+#5 24.58   Stored in directory: /tmp/pip-ephem-wheel-cache-cq2y1j1q/wheels/8f/46/1c/1f4e5d73a20eb816ead5014e97cdeb3928cf314fc46c7bab61
+#5 24.58 Successfully built promise
+#5 24.70 Installing collected packages: namex, libclang, kt-legacy, flatbuffers, zipp, wrapt, werkzeug, tqdm, toml, termcolor, tensorboard-data-server, protobuf, promise, optree, opt_einsum, ml_dtypes, mdurl, markdown, importlib_resources, immutabledict, h5py, grpcio, google_pasta, gast, fsspec, etils, einops, docstring-parser, astunparse, absl-py, tensorboard, simple_parsing, markdown-it-py, googleapis-common-protos, dm-tree, tensorflow-metadata, rich, keras, array_record, tensorflow, keras-tuner, tensorflow-datasets
+#5 24.95   WARNING: The script tqdm is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 24.95   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 25.11   WARNING: The script markdown_py is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 25.11   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 25.57   WARNING: The script tensorboard is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 25.57   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 25.62   WARNING: The script markdown-it is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 25.62   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 29.96   WARNING: The scripts import_pb_to_tensorboard, saved_model_cli, tensorboard, tf_upgrade_v2, tflite_convert and toco are installed in '/home/coder/.local/bin' which is not on PATH.
+#5 29.96   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 30.91   WARNING: The script tfds is installed in '/home/coder/.local/bin' which is not on PATH.
+#5 30.91   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+#5 30.93 
+#5 30.93 Successfully installed absl-py-2.3.1 array_record-0.8.1 astunparse-1.6.3 dm-tree-0.1.9 docstring-parser-0.17.0 einops-0.8.1 etils-1.13.0 flatbuffers-25.9.23 fsspec-2025.9.0 gast-0.6.0 google_pasta-0.2.0 googleapis-common-protos-1.70.0 grpcio-1.75.1 h5py-3.14.0 immutabledict-4.2.1 importlib_resources-6.5.2 keras-3.11.3 keras-tuner-1.4.7 kt-legacy-1.0.5 libclang-18.1.1 markdown-3.9 markdown-it-py-4.0.0 mdurl-0.1.2 ml_dtypes-0.5.3 namex-0.1.0 opt_einsum-3.4.0 optree-0.17.0 promise-2.3 protobuf-6.32.1 rich-14.1.0 simple_parsing-0.1.7 tensorboard-2.20.0 tensorboard-data-server-0.7.2 tensorflow-2.20.0 tensorflow-datasets-4.9.9 tensorflow-metadata-1.17.2 termcolor-3.1.0 toml-0.10.2 tqdm-4.67.1 werkzeug-3.1.3 wrapt-1.17.3 zipp-3.23.0
+#5 DONE 31.2s
+
+#6 [3/3] WORKDIR /home/coder
+#6 DONE 0.1s
+
+#7 exporting to image
+#7 exporting layers
+#7 exporting layers 19.6s done
+#7 exporting manifest sha256:7342868fed50f50518435c828a0f54cd5be10853eb37642f493f66ec3e602df8
+#7 exporting manifest sha256:7342868fed50f50518435c828a0f54cd5be10853eb37642f493f66ec3e602df8 done
+#7 exporting config sha256:f2ed3b8b1c67ecab0b5ef62302bf0fe8bbc25ac56ed31fbbd9b9fe14a8ebf671 done
+#7 exporting attestation manifest sha256:ed5ad5e4e4484f83b9452324cd528754a220754ba46690fec5017f311eda29ae done
+#7 exporting manifest list sha256:bc2aa7efda8763e471879e7b68a3d5356b9ddc1d71d485806c7d8c4ee026d0d5 done
+#7 naming to docker.io/ausbruhn87/coder-datasci-tensorflow-fedora:42 done
+#7 unpacking to docker.io/ausbruhn87/coder-datasci-tensorflow-fedora:42
+#7 unpacking to docker.io/ausbruhn87/coder-datasci-tensorflow-fedora:42 4.3s done
+#7 naming to docker.io/ausbruhn87/coder-datasci-tensorflow-fedora:latest done
+#7 unpacking to docker.io/ausbruhn87/coder-datasci-tensorflow-fedora:latest done
+#7 DONE 24.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/uci2g3ifm4w3izfbz44ohgvep
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-tensorflow-fedora]
+34f2ed65b49f: Waiting
+230c0c4422c9: Waiting
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8e2d43dca143: Waiting
+34f2ed65b49f: Waiting
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8e2d43dca143: Waiting
+34f2ed65b49f: Waiting
+230c0c4422c9: Waiting
+230c0c4422c9: Waiting
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8e2d43dca143: Waiting
+34f2ed65b49f: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8e2d43dca143: Waiting
+34f2ed65b49f: Waiting
+230c0c4422c9: Layer already exists
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+34f2ed65b49f: Waiting
+519b495971f8: Layer already exists
+4f4fb700ef54: Waiting
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8e2d43dca143: Waiting
+4f4fb700ef54: Layer already exists
+744c098761cb: Waiting
+1e3e546e4ad7: Waiting
+8e2d43dca143: Layer already exists
+744c098761cb: Layer already exists
+1e3e546e4ad7: Layer already exists
+3514cc5c595e: Pushed
+34f2ed65b49f: Pushed
+42: digest: sha256:bc2aa7efda8763e471879e7b68a3d5356b9ddc1d71d485806c7d8c4ee026d0d5 size: 856
+The push refers to repository [docker.io/ausbruhn87/coder-datasci-tensorflow-fedora]
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+1e3e546e4ad7: Waiting
+34f2ed65b49f: Waiting
+744c098761cb: Waiting
+230c0c4422c9: Waiting
+1e3e546e4ad7: Waiting
+34f2ed65b49f: Waiting
+744c098761cb: Waiting
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+1e3e546e4ad7: Waiting
+34f2ed65b49f: Waiting
+744c098761cb: Waiting
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+1e3e546e4ad7: Waiting
+34f2ed65b49f: Waiting
+744c098761cb: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Waiting
+230c0c4422c9: Waiting
+1e3e546e4ad7: Waiting
+34f2ed65b49f: Waiting
+744c098761cb: Waiting
+519b495971f8: Waiting
+3514cc5c595e: Waiting
+230c0c4422c9: Waiting
+1e3e546e4ad7: Waiting
+34f2ed65b49f: Waiting
+744c098761cb: Waiting
+519b495971f8: Layer already exists
+3514cc5c595e: Waiting
+4f4fb700ef54: Waiting
+8e2d43dca143: Layer already exists
+1e3e546e4ad7: Waiting
+34f2ed65b49f: Waiting
+744c098761cb: Waiting
+3514cc5c595e: Waiting
+4f4fb700ef54: Layer already exists
+230c0c4422c9: Layer already exists
+34f2ed65b49f: Waiting
+744c098761cb: Layer already exists
+3514cc5c595e: Waiting
+1e3e546e4ad7: Layer already exists
+3514cc5c595e: Already exists
+34f2ed65b49f: Waiting
+34f2ed65b49f: Layer already exists
+latest: digest: sha256:bc2aa7efda8763e471879e7b68a3d5356b9ddc1d71d485806c7d8c4ee026d0d5 size: 856
+./build-and-push-all.sh: line 42: cd: /Users/austen/projects/fed-coder/images: No such file or directory
