@@ -214,3 +214,101 @@ jobs:
           docker run --rm test-infra-terraform-${{ matrix.variant }} terragrunt --version
           docker run --rm test-infra-terraform-${{ matrix.variant }} tflint --version
           docker run --rm test-infra-terraform-${{ matrix.variant }} tfsec --version
+
+  test-infra-ansible:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build infra-ansible image
+        run: |
+          cd infra/ansible
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-infra-ansible-${{ matrix.variant }} .
+
+      - name: Test infra-ansible image
+        run: |
+          # Test Ansible installation
+          docker run --rm test-infra-ansible-${{ matrix.variant }} ansible --version
+          docker run --rm test-infra-ansible-${{ matrix.variant }} ansible-lint --version
+
+          # Test SSH tools
+          docker run --rm test-infra-ansible-${{ matrix.variant }} which sshpass
+          docker run --rm test-infra-ansible-${{ matrix.variant }} which ssh
+
+          # Test Python packages
+          docker run --rm test-infra-ansible-${{ matrix.variant }} python3 -c "import jmespath; print('jmespath ok')"
+          docker run --rm test-infra-ansible-${{ matrix.variant }} python3 -c "import netaddr; print('netaddr ok')"
+          docker run --rm test-infra-ansible-${{ matrix.variant }} python3 -c "import paramiko; print('paramiko ok')"
+
+  test-infra-cloud:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build infra-cloud image
+        run: |
+          cd infra/cloud
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-infra-cloud-${{ matrix.variant }} .
+
+      - name: Test infra-cloud image
+        run: |
+          # Test AWS CLI
+          docker run --rm test-infra-cloud-${{ matrix.variant }} aws --version
+          
+          # Test GCloud CLI
+          docker run --rm test-infra-cloud-${{ matrix.variant }} gcloud --version
+          
+          # Test Azure CLI
+          docker run --rm test-infra-cloud-${{ matrix.variant }} az --version
+          
+          # Test additional tools
+          docker run --rm test-infra-cloud-${{ matrix.variant }} python3 -c "import boto3; print('boto3 ok')"
+
+  test-dev-java:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build dev-java image
+        run: |
+          cd dev/java
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-dev-java-${{ matrix.variant }} .
+
+      - name: Test dev-java image
+        run: |
+          # Test Java installation
+          docker run --rm test-dev-java-${{ matrix.variant }} java --version
+          docker run --rm test-dev-java-${{ matrix.variant }} javac --version
+          
+          # Test Maven
+          docker run --rm test-dev-java-${{ matrix.variant }} mvn --version
+          
+          # Test Gradle
+          docker run --rm test-dev-java-${{ matrix.variant }} gradle --version
