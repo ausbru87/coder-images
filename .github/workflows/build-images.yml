@@ -38,6 +38,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -59,7 +62,7 @@ jobs:
             ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest
           cache-from: type=gha,scope=base-${{ matrix.variant }}
           cache-to: type=gha,mode=max,scope=base-${{ matrix.variant }}
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
 
   # Build datasci-python (depends on respective base images)
   build-datasci-python:

@@ -20,10 +20,14 @@ jobs:
     strategy:
       matrix:
         variant: [ubuntu, ubi9]
+        arch: [amd64, arm64]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -31,24 +35,24 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build base image
+      - name: Build base image for ${{ matrix.arch }}
         run: |
           cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t test-base-${{ matrix.variant }} .
+          docker build --platform linux/${{ matrix.arch }} -f ${{ matrix.variant }}.Dockerfile -t test-base-${{ matrix.variant }}-${{ matrix.arch }} .
 
-      - name: Test base image
+      - name: Test base image on ${{ matrix.arch }}
         run: |
           # Test that coder user exists
-          docker run --rm test-base-${{ matrix.variant }} id coder
+          docker run --platform linux/${{ matrix.arch }} --rm test-base-${{ matrix.variant }}-${{ matrix.arch }} id coder
 
           # Test that coder has sudo access
-          docker run --rm test-base-${{ matrix.variant }} sudo echo "sudo works"
+          docker run --platform linux/${{ matrix.arch }} --rm test-base-${{ matrix.variant }}-${{ matrix.arch }} sudo echo "sudo works"
 
           # Test essential tools
-          docker run --rm test-base-${{ matrix.variant }} which git
-          docker run --rm test-base-${{ matrix.variant }} which curl
-          docker run --rm test-base-${{ matrix.variant }} which wget
-          docker run --rm test-base-${{ matrix.variant }} which vim
+          docker run --platform linux/${{ matrix.arch }} --rm test-base-${{ matrix.variant }}-${{ matrix.arch }} which git
+          docker run --platform linux/${{ matrix.arch }} --rm test-base-${{ matrix.variant }}-${{ matrix.arch }} which curl
+          docker run --platform linux/${{ matrix.arch }} --rm test-base-${{ matrix.variant }}-${{ matrix.arch }} which wget
+          docker run --platform linux/${{ matrix.arch }} --rm test-base-${{ matrix.variant }}-${{ matrix.arch }} which vim
 
   test-datasci-python:
     runs-on: ubuntu-latest
