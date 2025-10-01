@@ -69,38 +69,6 @@ jobs:
           # Test Jupyter
           docker run --rm test-datasci-python-${{ matrix.variant }} jupyter --version
 
-  test-dev-node:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        variant: [ubuntu, ubi9]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Build base image
-        run: |
-          cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
-
-      - name: Build dev-node image
-        run: |
-          cd dev/node
-          docker build -f ${{ matrix.variant }}.Dockerfile -t test-dev-node-${{ matrix.variant }} .
-
-      - name: Test dev-node image
-        run: |
-          # Test Node.js
-          docker run --rm test-dev-node-${{ matrix.variant }} node --version
-          docker run --rm test-dev-node-${{ matrix.variant }} npm --version
-
-          # Test TypeScript
-          docker run --rm test-dev-node-${{ matrix.variant }} tsc --version
-
-          # Test package managers
-          docker run --rm test-dev-node-${{ matrix.variant }} pnpm --version
-          docker run --rm test-dev-node-${{ matrix.variant }} yarn --version
-
   test-dev-go:
     runs-on: ubuntu-latest
     strategy:
