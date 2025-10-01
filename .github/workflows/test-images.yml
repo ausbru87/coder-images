@@ -1,0 +1,216 @@
+name: Test Images
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test-base:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-base-${{ matrix.variant }} .
+
+      - name: Test base image
+        run: |
+          # Test that coder user exists
+          docker run --rm test-base-${{ matrix.variant }} id coder
+
+          # Test that coder has sudo access
+          docker run --rm test-base-${{ matrix.variant }} sudo echo "sudo works"
+
+          # Test essential tools
+          docker run --rm test-base-${{ matrix.variant }} which git
+          docker run --rm test-base-${{ matrix.variant }} which curl
+          docker run --rm test-base-${{ matrix.variant }} which wget
+          docker run --rm test-base-${{ matrix.variant }} which vim
+
+  test-datasci-python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build datasci-python image
+        run: |
+          cd datasci/python
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-datasci-python-${{ matrix.variant }} .
+
+      - name: Test datasci-python image
+        run: |
+          # Test Python
+          docker run --rm test-datasci-python-${{ matrix.variant }} python3 --version
+
+          # Test pip packages
+          docker run --rm test-datasci-python-${{ matrix.variant }} python3 -c "import numpy; print(numpy.__version__)"
+          docker run --rm test-datasci-python-${{ matrix.variant }} python3 -c "import pandas; print(pandas.__version__)"
+          docker run --rm test-datasci-python-${{ matrix.variant }} python3 -c "import scipy; print(scipy.__version__)"
+          docker run --rm test-datasci-python-${{ matrix.variant }} python3 -c "import matplotlib; print(matplotlib.__version__)"
+          docker run --rm test-datasci-python-${{ matrix.variant }} python3 -c "import jupyter; print('jupyter ok')"
+
+          # Test Jupyter
+          docker run --rm test-datasci-python-${{ matrix.variant }} jupyter --version
+
+  test-dev-node:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build dev-node image
+        run: |
+          cd dev/node
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-dev-node-${{ matrix.variant }} .
+
+      - name: Test dev-node image
+        run: |
+          # Test Node.js
+          docker run --rm test-dev-node-${{ matrix.variant }} node --version
+          docker run --rm test-dev-node-${{ matrix.variant }} npm --version
+
+          # Test TypeScript
+          docker run --rm test-dev-node-${{ matrix.variant }} tsc --version
+
+          # Test package managers
+          docker run --rm test-dev-node-${{ matrix.variant }} pnpm --version
+          docker run --rm test-dev-node-${{ matrix.variant }} yarn --version
+
+  test-dev-go:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build dev-go image
+        run: |
+          cd dev/go
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-dev-go-${{ matrix.variant }} .
+
+      - name: Test dev-go image
+        run: |
+          # Test Go
+          docker run --rm test-dev-go-${{ matrix.variant }} go version
+
+          # Test Go tools
+          docker run --rm test-dev-go-${{ matrix.variant }} which gopls
+          docker run --rm test-dev-go-${{ matrix.variant }} which dlv
+
+  test-dev-rust:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build dev-rust image
+        run: |
+          cd dev/rust
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-dev-rust-${{ matrix.variant }} .
+
+      - name: Test dev-rust image
+        run: |
+          # Test Rust
+          docker run --rm test-dev-rust-${{ matrix.variant }} rustc --version
+          docker run --rm test-dev-rust-${{ matrix.variant }} cargo --version
+
+          # Test Rust tools
+          docker run --rm test-dev-rust-${{ matrix.variant }} cargo fmt --version
+          docker run --rm test-dev-rust-${{ matrix.variant }} cargo clippy --version
+
+  test-infra-k8s:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build infra-k8s image
+        run: |
+          cd infra/k8s
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-infra-k8s-${{ matrix.variant }} .
+
+      - name: Test infra-k8s image
+        run: |
+          # Test Kubernetes tools
+          docker run --rm test-infra-k8s-${{ matrix.variant }} kubectl version --client
+          docker run --rm test-infra-k8s-${{ matrix.variant }} helm version
+          docker run --rm test-infra-k8s-${{ matrix.variant }} k9s version
+          docker run --rm test-infra-k8s-${{ matrix.variant }} which kubectx
+          docker run --rm test-infra-k8s-${{ matrix.variant }} which kubens
+          docker run --rm test-infra-k8s-${{ matrix.variant }} kustomize version
+
+  test-infra-terraform:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ausbruhn87/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build infra-terraform image
+        run: |
+          cd infra/terraform
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-infra-terraform-${{ matrix.variant }} .
+
+      - name: Test infra-terraform image
+        run: |
+          # Test IaC tools
+          docker run --rm test-infra-terraform-${{ matrix.variant }} terraform version
+          docker run --rm test-infra-terraform-${{ matrix.variant }} tofu version
+          docker run --rm test-infra-terraform-${{ matrix.variant }} terragrunt --version
+          docker run --rm test-infra-terraform-${{ matrix.variant }} tflint --version
+          docker run --rm test-infra-terraform-${{ matrix.variant }} tfsec --version

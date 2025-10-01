@@ -1,0 +1,243 @@
+name: Build and Push Images
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'base/**'
+      - 'datasci/**'
+      - 'dev/**'
+      - 'infra/**'
+      - '.github/workflows/build-images.yml'
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  DOCKER_REGISTRY: docker.io
+  DOCKER_USERNAME: ausbruhn87
+
+jobs:
+  # Build base images first (they are dependencies)
+  build-base:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set version tags
+        id: tags
+        run: |
+          if [ "${{ matrix.variant }}" == "ubuntu" ]; then
+            echo "version=24.04" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "fedora" ]; then
+            echo "version=42" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "ubi9" ]; then
+            echo "version=9.6" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push base image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./base
+          file: ./base/${{ matrix.variant }}.Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:${{ steps.tags.outputs.version }}
+            ${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
+
+  # Build datasci-python (depends on base)
+  build-datasci-python:
+    needs: build-base
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set version tags
+        id: tags
+        run: |
+          if [ "${{ matrix.variant }}" == "ubuntu" ]; then
+            echo "version=24.04" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "fedora" ]; then
+            echo "version=42" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "ubi9" ]; then
+            echo "version=9.6" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push datasci-python image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./datasci/python
+          file: ./datasci/python/${{ matrix.variant }}.Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ env.DOCKER_USERNAME }}/coder-datasci-python-${{ matrix.variant }}:${{ steps.tags.outputs.version }}
+            ${{ env.DOCKER_USERNAME }}/coder-datasci-python-${{ matrix.variant }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
+
+  # Build other datasci images (depend on datasci-python)
+  build-datasci:
+    needs: build-datasci-python
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+        type: [pytorch, tensorflow, ml]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set version tags
+        id: tags
+        run: |
+          if [ "${{ matrix.variant }}" == "ubuntu" ]; then
+            echo "version=24.04" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "fedora" ]; then
+            echo "version=42" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "ubi9" ]; then
+            echo "version=9.6" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push datasci image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./datasci/${{ matrix.type }}
+          file: ./datasci/${{ matrix.type }}/${{ matrix.variant }}.Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ env.DOCKER_USERNAME }}/coder-datasci-${{ matrix.type }}-${{ matrix.variant }}:${{ steps.tags.outputs.version }}
+            ${{ env.DOCKER_USERNAME }}/coder-datasci-${{ matrix.type }}-${{ matrix.variant }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
+
+  # Build dev images (depend on base)
+  build-dev:
+    needs: build-base
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+        type: [node, go, rust, java]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set version tags
+        id: tags
+        run: |
+          if [ "${{ matrix.variant }}" == "ubuntu" ]; then
+            echo "version=24.04" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "fedora" ]; then
+            echo "version=42" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "ubi9" ]; then
+            echo "version=9.6" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push dev image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./dev/${{ matrix.type }}
+          file: ./dev/${{ matrix.type }}/${{ matrix.variant }}.Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ env.DOCKER_USERNAME }}/coder-dev-${{ matrix.type }}-${{ matrix.variant }}:${{ steps.tags.outputs.version }}
+            ${{ env.DOCKER_USERNAME }}/coder-dev-${{ matrix.type }}-${{ matrix.variant }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
+
+  # Build infra images (depend on base)
+  build-infra:
+    needs: build-base
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, fedora, ubi9]
+        type: [k8s, terraform, ansible, cloud]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Set version tags
+        id: tags
+        run: |
+          if [ "${{ matrix.variant }}" == "ubuntu" ]; then
+            echo "version=24.04" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "fedora" ]; then
+            echo "version=42" >> $GITHUB_OUTPUT
+          elif [ "${{ matrix.variant }}" == "ubi9" ]; then
+            echo "version=9.6" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build and push infra image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./infra/${{ matrix.type }}
+          file: ./infra/${{ matrix.type }}/${{ matrix.variant }}.Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ${{ env.DOCKER_USERNAME }}/coder-infra-${{ matrix.type }}-${{ matrix.variant }}:${{ steps.tags.outputs.version }}
+            ${{ env.DOCKER_USERNAME }}/coder-infra-${{ matrix.type }}-${{ matrix.variant }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
