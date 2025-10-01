@@ -8,6 +8,8 @@ RUN dnf update -y && \
     python3 \
     python3-pip \
     unzip \
+    https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
+    dnf install -y \
     less \
     groff && \
     dnf clean all
