@@ -47,7 +47,11 @@ RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/
 
 # Install stern (log viewer)
 RUN ARCH=$(dpkg --print-architecture) && \
-    wget -q https://github.com/stern/stern/releases/latest/download/stern_linux_${ARCH} -O /usr/local/bin/stern && \
+    STERN_VERSION=$(curl -s https://api.github.com/repos/stern/stern/releases/latest | grep tag_name | cut -d '"' -f 4) && \
+    wget -q https://github.com/stern/stern/releases/download/${STERN_VERSION}/stern_${STERN_VERSION#v}_linux_${ARCH}.tar.gz && \
+    tar -xzf stern_${STERN_VERSION#v}_linux_${ARCH}.tar.gz && \
+    mv stern /usr/local/bin/stern && \
+    rm stern_${STERN_VERSION#v}_linux_${ARCH}.tar.gz && \
     chmod +x /usr/local/bin/stern
 
 USER coder
