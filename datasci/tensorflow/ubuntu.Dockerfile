@@ -1,4 +1,4 @@
-FROM ausbruhn87/coder-datasci-python-ubuntu:latest
+FROM ghcr.io/ausbru87/coder-datasci-python-ubuntu:latest
 
 USER coder
 
