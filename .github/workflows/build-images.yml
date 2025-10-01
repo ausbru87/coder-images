@@ -140,7 +140,7 @@ jobs:
     strategy:
       matrix:
         variant: [ubuntu, ubi9]
-        type: [node, go, rust, java]
+        type: [go, rust, java]
         include:
           - variant: ubuntu
             version: "24.04"
