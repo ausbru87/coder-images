@@ -9,7 +9,6 @@ on:
 env:
   DOCKER_REGISTRY: ghcr.io
   DOCKER_USERNAME: ${{ github.repository_owner }}
-  DOCKER_REPO: coder-images
 
 permissions:
   contents: read
@@ -63,7 +62,7 @@ jobs:
       - name: Build base image
         run: |
           cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}/coder-base-${{ matrix.variant }}:latest .
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
 
       - name: Build datasci-python image
         run: |
@@ -97,7 +96,7 @@ jobs:
       - name: Build base image
         run: |
           cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}/coder-base-${{ matrix.variant }}:latest .
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
 
       - name: Build dev-go image
         run: |
@@ -125,7 +124,7 @@ jobs:
       - name: Build base image
         run: |
           cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}/coder-base-${{ matrix.variant }}:latest .
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
 
       - name: Build dev-rust image
         run: |
@@ -154,7 +153,7 @@ jobs:
       - name: Build base image
         run: |
           cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}/coder-base-${{ matrix.variant }}:latest .
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
 
       - name: Build infra-k8s image
         run: |
@@ -183,7 +182,7 @@ jobs:
       - name: Build base image
         run: |
           cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}/coder-base-${{ matrix.variant }}:latest .
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
 
       - name: Build infra-terraform image
         run: |
@@ -211,7 +210,7 @@ jobs:
       - name: Build base image
         run: |
           cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}/coder-base-${{ matrix.variant }}:latest .
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
 
       - name: Build infra-ansible image
         run: |
@@ -245,7 +244,7 @@ jobs:
       - name: Build base image
         run: |
           cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}/coder-base-${{ matrix.variant }}:latest .
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
 
       - name: Build infra-cloud image
         run: |
@@ -278,7 +277,7 @@ jobs:
       - name: Build base image
         run: |
           cd base
-          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_REPO }}/coder-base-${{ matrix.variant }}:latest .
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
 
       - name: Build dev-java image
         run: |
