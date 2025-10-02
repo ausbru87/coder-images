@@ -2,6 +2,12 @@ FROM ghcr.io/ausbru87/coder-base-ubi9:latest
 
 USER root
 
+# Enable EPEL and CodeReady Builder repos for additional packages
+RUN dnf install -y \
+    https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm && \
+    dnf config-manager --set-enabled crb && \
+    dnf clean all
+
 # Install C++ development tools and libraries
 RUN dnf install -y \
     gcc-c++ \
@@ -13,9 +19,7 @@ RUN dnf install -y \
     clang-tools-extra \
     lldb \
     valgrind \
-    ccache \
-    pkgconfig \
-    boost-devel && \
+    pkgconfig && \
     dnf clean all
 
 USER coder

@@ -74,7 +74,6 @@ Built on `coder-base-*` images.
 - Valgrind, ccache
 - clangd (language server)
 - clang-format, clang-tidy
-- Boost libraries
 
 #### `coder-dev-python-*`
 - Python 3.12

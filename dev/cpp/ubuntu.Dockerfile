@@ -16,15 +16,10 @@ RUN apt-get update && \
     valgrind \
     ccache \
     pkg-config \
-    libboost-all-dev && \
+    clangd && \
     rm -rf /var/lib/apt/lists/*
 
 USER coder
-
-# Install clangd language server
-RUN sudo apt-get update && \
-    sudo apt-get install -y --no-install-recommends clangd && \
-    sudo rm -rf /var/lib/apt/lists/*
 
 # Set up environment for C++
 ENV CC=gcc
