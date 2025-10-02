@@ -66,6 +66,24 @@ Built on `coder-base-*` images.
 - Maven
 - Gradle 8.11
 
+#### `coder-dev-cpp-*`
+- GCC and G++
+- Clang and LLVM tools
+- CMake, Ninja build
+- GDB and LLDB debuggers
+- Valgrind, ccache
+- clangd (language server)
+- clang-format, clang-tidy
+- Boost libraries
+
+#### `coder-dev-python-*`
+- Python 3.12
+- pip, setuptools, wheel
+- Code quality: black, flake8, pylint, mypy
+- Testing: pytest, pytest-cov
+- Development: ipython, python-lsp-server
+- Common libraries: requests
+
 ### Infrastructure Images
 
 Built on `coder-base-*` images for DevSecOps, SRE, and SysAdmin workflows.
