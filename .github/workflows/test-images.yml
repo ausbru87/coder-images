@@ -293,9 +293,78 @@ jobs:
           # Test Java installation
           docker run --rm test-dev-java-${{ matrix.variant }} java --version
           docker run --rm test-dev-java-${{ matrix.variant }} javac --version
-          
+
           # Test Maven
           docker run --rm test-dev-java-${{ matrix.variant }} mvn --version
-          
+
           # Test Gradle
           docker run --rm test-dev-java-${{ matrix.variant }} gradle --version
+
+  test-dev-cpp:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build dev-cpp image
+        run: |
+          cd dev/cpp
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-dev-cpp-${{ matrix.variant }} .
+
+      - name: Test dev-cpp image
+        run: |
+          # Test C++ compilers
+          docker run --rm test-dev-cpp-${{ matrix.variant }} gcc --version
+          docker run --rm test-dev-cpp-${{ matrix.variant }} g++ --version
+          docker run --rm test-dev-cpp-${{ matrix.variant }} clang --version
+
+          # Test build tools
+          docker run --rm test-dev-cpp-${{ matrix.variant }} cmake --version
+          docker run --rm test-dev-cpp-${{ matrix.variant }} ninja --version
+
+          # Test debuggers
+          docker run --rm test-dev-cpp-${{ matrix.variant }} gdb --version
+          docker run --rm test-dev-cpp-${{ matrix.variant }} which clangd
+
+  test-dev-python:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [ubuntu, ubi9]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build base image
+        run: |
+          cd base
+          docker build -f ${{ matrix.variant }}.Dockerfile -t ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-base-${{ matrix.variant }}:latest .
+
+      - name: Build dev-python image
+        run: |
+          cd dev/python
+          docker build -f ${{ matrix.variant }}.Dockerfile -t test-dev-python-${{ matrix.variant }} .
+
+      - name: Test dev-python image
+        run: |
+          # Test Python installation
+          docker run --rm test-dev-python-${{ matrix.variant }} python3 --version
+          docker run --rm test-dev-python-${{ matrix.variant }} pip3 --version
+
+          # Test Python tools
+          docker run --rm test-dev-python-${{ matrix.variant }} black --version
+          docker run --rm test-dev-python-${{ matrix.variant }} flake8 --version
+          docker run --rm test-dev-python-${{ matrix.variant }} pylint --version
+          docker run --rm test-dev-python-${{ matrix.variant }} mypy --version
+          docker run --rm test-dev-python-${{ matrix.variant }} pytest --version
+
+          # Test Python packages
+          docker run --rm test-dev-python-${{ matrix.variant }} python3 -c "import requests; print('requests ok')"
