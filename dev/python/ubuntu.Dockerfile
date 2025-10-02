@@ -9,8 +9,7 @@ RUN apt-get update && \
     python3.12-dev \
     python3.12-venv \
     python3-pip \
-    python3-setuptools \
-    python3-wheel \
+    pipx \
     build-essential \
     libssl-dev \
     libffi-dev && \
@@ -21,6 +20,7 @@ USER coder
 # Set up Python environment
 ENV PATH="/home/coder/.local/bin:${PATH}"
 ENV PYTHONUNBUFFERED=1
+ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 # Upgrade pip and install common development tools
 RUN python3 -m pip install --user --upgrade pip setuptools wheel && \
