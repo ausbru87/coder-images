@@ -16,7 +16,6 @@ RUN apt-get update && \
     unzip \
     locales \
     gnupg2 && \
-    rm -rf /var/lib/apt/lists/*
 
 # Generate locale
 RUN locale-gen en_US.UTF-8
