@@ -1,5 +1,6 @@
 FROM codercom/enterprise-base
 
+USER root
 SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -16,6 +17,7 @@ RUN apt-get update && \
     unzip \
     locales \
     gnupg2 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Generate locale
 RUN locale-gen en_US.UTF-8
