@@ -353,14 +353,13 @@ jobs:
           cache-to: type=gha,mode=max,scope=dev-python-${{ matrix.variant }}
           platforms: linux/amd64,linux/arm64
 
-  # Build infra images per variant (depend on base)
-  build-infra-variants:
+  # Build infra-devops images (depend on base)
+  build-infra-devops:
     needs: build-base-images
     runs-on: ubuntu-latest
     strategy:
       matrix:
         variant: [ubuntu, ubi9]
-        type: [k8s, terraform, ansible, cloud]
         include:
           - variant: ubuntu
             version: "24.04"
@@ -380,15 +379,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push infra-${{ matrix.type }}-${{ matrix.variant }} image
+      - name: Build and push infra-devops-${{ matrix.variant }} image
         uses: docker/build-push-action@v5
         with:
-          context: ./infra/${{ matrix.type }}
-          file: ./infra/${{ matrix.type }}/${{ matrix.variant }}.Dockerfile
+          context: ./infra/devops
+          file: ./infra/devops/${{ matrix.variant }}.Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
-            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-infra-${{ matrix.type }}-${{ matrix.variant }}:${{ matrix.version }}
-            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-infra-${{ matrix.type }}-${{ matrix.variant }}:latest
-          cache-from: type=gha,scope=infra-${{ matrix.type }}-${{ matrix.variant }}
-          cache-to: type=gha,mode=max,scope=infra-${{ matrix.type }}-${{ matrix.variant }}
-          platforms: linux/amd64
+            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-infra-devops-${{ matrix.variant }}:${{ matrix.version }}
+            ${{ env.DOCKER_REGISTRY }}/${{ env.DOCKER_USERNAME }}/coder-infra-devops-${{ matrix.variant }}:latest
+          cache-from: type=gha,scope=infra-devops-${{ matrix.variant }}
+          cache-to: type=gha,mode=max,scope=infra-devops-${{ matrix.variant }}
+          platforms: linux/amd64,linux/arm64

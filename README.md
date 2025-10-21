@@ -87,32 +87,15 @@ Built on `coder-base-*` images.
 
 Built on `coder-base-*` images for DevSecOps, SRE, and SysAdmin workflows.
 
-#### `coder-infra-k8s-*`
-- kubectl
-- Helm
-- k9s
-- kubectx & kubens
-- kustomize
-- stern (log viewer)
-
-#### `coder-infra-terraform-*`
-- Terraform 1.10
-- OpenTofu 1.8
-- Terragrunt
-- tflint
-- tfsec
-
-#### `coder-infra-ansible-*`
-- Ansible & ansible-core
-- ansible-lint
-- Molecule
-- yamllint
-- Support libraries: jmespath, netaddr, dnspython
-
-#### `coder-infra-cloud-*`
-- AWS CLI, aws-shell, boto3
-- Azure CLI
-- Google Cloud CLI (gcloud)
+#### `coder-infra-devops-*`
+A complete DevOps/SRE toolkit combining all essential infrastructure tools:
+- **Cloud CLIs**: AWS CLI (v2), Google Cloud CLI (gcloud), Azure CLI
+- **Kubernetes**: kubectl, Helm, k9s, kubectx/kubens, kustomize, stern
+- **OpenShift**: oc (OpenShift CLI), openshift-install
+- **Infrastructure as Code**: Terraform, OpenTofu, Terragrunt, tflint, tfsec
+- **Version Control**: GitHub CLI (gh)
+- **Python Tools**: aws-shell, boto3
+- **Standard CLI Tools**: vim, nano, less, jq, and more
 
 ## Image Naming Convention
 
