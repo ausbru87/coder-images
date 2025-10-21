@@ -24,7 +24,61 @@ permissions:
   packages: write
 
 jobs:
+  # Detect which files changed to determine which images to build
+  changes:
+    runs-on: ubuntu-latest
+    # Required for pull requests
+    permissions:
+      pull-requests: read
+    outputs:
+      base: ${{ steps.filter.outputs.base }}
+      datasci-python: ${{ steps.filter.outputs.datasci-python }}
+      datasci-variants: ${{ steps.filter.outputs.datasci-variants }}
+      dev-go: ${{ steps.filter.outputs.dev-go }}
+      dev-rust: ${{ steps.filter.outputs.dev-rust }}
+      dev-java: ${{ steps.filter.outputs.dev-java }}
+      dev-cpp: ${{ steps.filter.outputs.dev-cpp }}
+      dev-python: ${{ steps.filter.outputs.dev-python }}
+      infra-devops: ${{ steps.filter.outputs.infra-devops }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            base:
+              - 'base/**'
+            datasci-python:
+              - 'base/**'
+              - 'datasci/python/**'
+            datasci-variants:
+              - 'base/**'
+              - 'datasci/python/**'
+              - 'datasci/pytorch/**'
+              - 'datasci/tensorflow/**'
+              - 'datasci/ml/**'
+            dev-go:
+              - 'base/**'
+              - 'dev/go/**'
+            dev-rust:
+              - 'base/**'
+              - 'dev/rust/**'
+            dev-java:
+              - 'base/**'
+              - 'dev/java/**'
+            dev-cpp:
+              - 'base/**'
+              - 'dev/cpp/**'
+            dev-python:
+              - 'base/**'
+              - 'dev/python/**'
+            infra-devops:
+              - 'base/**'
+              - 'infra/devops/**'
+
   build-base-images:
+    needs: changes
+    if: ${{ needs.changes.outputs.base == 'true' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -63,7 +117,8 @@ jobs:
 
   # Build datasci-python (depends on respective base images)
   build-datasci-python:
-    needs: build-base-images
+    needs: [changes, build-base-images]
+    if: ${{ always() && (needs.changes.outputs.datasci-python == 'true' || github.event_name == 'workflow_dispatch') && (needs.build-base-images.result == 'success' || needs.build-base-images.result == 'skipped') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -102,7 +157,8 @@ jobs:
 
   # Build other datasci images per variant (depend on datasci-python)
   build-datasci-variants:
-    needs: build-datasci-python
+    needs: [changes, build-datasci-python]
+    if: ${{ always() && (needs.changes.outputs.datasci-variants == 'true' || github.event_name == 'workflow_dispatch') && (needs.build-datasci-python.result == 'success' || needs.build-datasci-python.result == 'skipped') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -142,7 +198,8 @@ jobs:
 
   # Build dev-go images (depend on base)
   build-dev-go:
-    needs: build-base-images
+    needs: [changes, build-base-images]
+    if: ${{ always() && (needs.changes.outputs.dev-go == 'true' || github.event_name == 'workflow_dispatch') && (needs.build-base-images.result == 'success' || needs.build-base-images.result == 'skipped') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -181,7 +238,8 @@ jobs:
 
   # Build dev-rust images (depend on base)
   build-dev-rust:
-    needs: build-base-images
+    needs: [changes, build-base-images]
+    if: ${{ always() && (needs.changes.outputs.dev-rust == 'true' || github.event_name == 'workflow_dispatch') && (needs.build-base-images.result == 'success' || needs.build-base-images.result == 'skipped') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -220,7 +278,8 @@ jobs:
 
   # Build dev-java images (depend on base)
   build-dev-java:
-    needs: build-base-images
+    needs: [changes, build-base-images]
+    if: ${{ always() && (needs.changes.outputs.dev-java == 'true' || github.event_name == 'workflow_dispatch') && (needs.build-base-images.result == 'success' || needs.build-base-images.result == 'skipped') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -259,7 +318,8 @@ jobs:
 
   # Build dev-cpp images (depend on base)
   build-dev-cpp:
-    needs: build-base-images
+    needs: [changes, build-base-images]
+    if: ${{ always() && (needs.changes.outputs.dev-cpp == 'true' || github.event_name == 'workflow_dispatch') && (needs.build-base-images.result == 'success' || needs.build-base-images.result == 'skipped') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -298,7 +358,8 @@ jobs:
 
   # Build dev-python images (depend on base)
   build-dev-python:
-    needs: build-base-images
+    needs: [changes, build-base-images]
+    if: ${{ always() && (needs.changes.outputs.dev-python == 'true' || github.event_name == 'workflow_dispatch') && (needs.build-base-images.result == 'success' || needs.build-base-images.result == 'skipped') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -337,7 +398,8 @@ jobs:
 
   # Build infra-devops images (depend on base)
   build-infra-devops:
-    needs: build-base-images
+    needs: [changes, build-base-images]
+    if: ${{ always() && (needs.changes.outputs.infra-devops == 'true' || github.event_name == 'workflow_dispatch') && (needs.build-base-images.result == 'success' || needs.build-base-images.result == 'skipped') }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
