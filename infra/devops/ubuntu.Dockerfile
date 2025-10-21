@@ -104,7 +104,7 @@ RUN ARCH=$(dpkg --print-architecture) && \
     wget -q https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux-${OC_ARCH}.tar.gz && \
     tar -xzf openshift-client-linux-${OC_ARCH}.tar.gz && \
     mv oc /usr/local/bin/ && \
-    rm openshift-client-linux-${OC_ARCH}.tar.gz kubectl README.md && \
+    rm -f openshift-client-linux-${OC_ARCH}.tar.gz kubectl README.md && \
     oc version --client
 
 # Install OpenShift Installer
@@ -117,7 +117,7 @@ RUN ARCH=$(dpkg --print-architecture) && \
     wget -q https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-install-linux-${OC_ARCH}.tar.gz && \
     tar -xzf openshift-install-linux-${OC_ARCH}.tar.gz && \
     mv openshift-install /usr/local/bin/ && \
-    rm openshift-install-linux-${OC_ARCH}.tar.gz README.md && \
+    rm -f openshift-install-linux-${OC_ARCH}.tar.gz README.md && \
     openshift-install version
 
 # ===== Infrastructure as Code =====
