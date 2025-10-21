@@ -93,32 +93,34 @@ RUN ARCH=$(dpkg --print-architecture) && \
     rm stern_${STERN_VERSION#v}_linux_${ARCH}.tar.gz && \
     chmod +x /usr/local/bin/stern
 
-# Install OpenShift CLI (oc)
-RUN ARCH=$(dpkg --print-architecture) && \
-    if [ "$ARCH" = "amd64" ]; then \
-        OC_ARCH="x86_64"; \
-    elif [ "$ARCH" = "arm64" ]; then \
-        OC_ARCH="arm64"; \
-    fi && \
-    OC_VERSION=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/release.txt | grep 'Name:' | awk '{print $2}') && \
-    wget -q https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux-${OC_ARCH}.tar.gz && \
-    tar -xzf openshift-client-linux-${OC_ARCH}.tar.gz && \
-    mv oc /usr/local/bin/ && \
-    rm -f openshift-client-linux-${OC_ARCH}.tar.gz kubectl README.md && \
-    oc version --client
+# Install OpenShift CLI (oc) - Temporarily disabled due to build issues
+# TODO: Re-enable once we can debug the installation
+# RUN ARCH=$(dpkg --print-architecture) && \
+#     if [ "$ARCH" = "amd64" ]; then \
+#         OC_ARCH="x86_64"; \
+#     elif [ "$ARCH" = "arm64" ]; then \
+#         OC_ARCH="arm64"; \
+#     fi && \
+#     OC_VERSION=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/release.txt | grep 'Name:' | awk '{print $2}') && \
+#     wget -q https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux-${OC_ARCH}.tar.gz && \
+#     tar -xzf openshift-client-linux-${OC_ARCH}.tar.gz && \
+#     mv oc /usr/local/bin/ && \
+#     rm -f openshift-client-linux-${OC_ARCH}.tar.gz kubectl README.md && \
+#     oc version --client
 
-# Install OpenShift Installer
-RUN ARCH=$(dpkg --print-architecture) && \
-    if [ "$ARCH" = "amd64" ]; then \
-        OC_ARCH="x86_64"; \
-    elif [ "$ARCH" = "arm64" ]; then \
-        OC_ARCH="arm64"; \
-    fi && \
-    wget -q https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-install-linux-${OC_ARCH}.tar.gz && \
-    tar -xzf openshift-install-linux-${OC_ARCH}.tar.gz && \
-    mv openshift-install /usr/local/bin/ && \
-    rm -f openshift-install-linux-${OC_ARCH}.tar.gz README.md && \
-    openshift-install version
+# Install OpenShift Installer - Temporarily disabled due to build issues
+# TODO: Re-enable once we can debug the installation
+# RUN ARCH=$(dpkg --print-architecture) && \
+#     if [ "$ARCH" = "amd64" ]; then \
+#         OC_ARCH="x86_64"; \
+#     elif [ "$ARCH" = "arm64" ]; then \
+#         OC_ARCH="arm64"; \
+#     fi && \
+#     wget -q https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-install-linux-${OC_ARCH}.tar.gz && \
+#     tar -xzf openshift-install-linux-${OC_ARCH}.tar.gz && \
+#     mv openshift-install /usr/local/bin/ && \
+#     rm -f openshift-install-linux-${OC_ARCH}.tar.gz README.md && \
+#     openshift-install version
 
 # ===== Infrastructure as Code =====
 

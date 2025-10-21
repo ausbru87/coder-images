@@ -91,11 +91,12 @@ Built on `coder-base-*` images for DevSecOps, SRE, and SysAdmin workflows.
 A complete DevOps/SRE toolkit combining all essential infrastructure tools:
 - **Cloud CLIs**: AWS CLI (v2), Google Cloud CLI (gcloud), Azure CLI
 - **Kubernetes**: kubectl, Helm, k9s, kubectx/kubens, kustomize, stern
-- **OpenShift**: oc (OpenShift CLI), openshift-install
 - **Infrastructure as Code**: Terraform, OpenTofu, Terragrunt, tflint, tfsec
 - **Version Control**: GitHub CLI (gh)
 - **Python Tools**: aws-shell, boto3
 - **Standard CLI Tools**: vim, nano, less, jq, and more
+
+Note: OpenShift CLI tools (oc, openshift-install) temporarily disabled due to build issues.
 
 ## Image Naming Convention
 
