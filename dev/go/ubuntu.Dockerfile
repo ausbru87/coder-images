@@ -3,11 +3,9 @@ FROM ghcr.io/ausbru87/coder-base-ubuntu:latest
 USER root
 
 # Install Go 1.23
-RUN ARCH=$(dpkg --print-architecture) && \
-    if [ "$ARCH" = "amd64" ]; then GOARCH="amd64"; elif [ "$ARCH" = "arm64" ]; then GOARCH="arm64"; fi && \
-    wget -q https://go.dev/dl/go1.23.4.linux-${GOARCH}.tar.gz && \
-    tar -C /usr/local -xzf go1.23.4.linux-${GOARCH}.tar.gz && \
-    rm go1.23.4.linux-${GOARCH}.tar.gz
+RUN wget -q https://go.dev/dl/go1.23.4.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz && \
+    rm go1.23.4.linux-amd64.tar.gz
 
 USER coder
 

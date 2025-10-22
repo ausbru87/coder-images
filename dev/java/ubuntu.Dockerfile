@@ -17,9 +17,8 @@ RUN wget -q https://services.gradle.org/distributions/gradle-8.11.1-bin.zip && \
 
 USER root
 
-# Set Java environment variables dynamically based on architecture
-RUN ARCH=$(dpkg --print-architecture) && \
-    ln -sf /usr/lib/jvm/java-21-openjdk-${ARCH} /usr/lib/jvm/java-21-openjdk
+# Set Java environment variables for AMD64
+RUN ln -sf /usr/lib/jvm/java-21-openjdk-amd64 /usr/lib/jvm/java-21-openjdk
 
 USER coder
 

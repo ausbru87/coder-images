@@ -23,12 +23,7 @@ RUN apt-get update && \
 # ===== Cloud CLIs =====
 
 # Install AWS CLI v2
-RUN ARCH=$(dpkg --print-architecture) && \
-    if [ "$ARCH" = "amd64" ]; then \
-        curl -sL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"; \
-    elif [ "$ARCH" = "arm64" ]; then \
-        curl -sL "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip"; \
-    fi && \
+RUN curl -sL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
     unzip -q awscliv2.zip && \
     ./aws/install && \
     rm -rf aws awscliv2.zip && \
@@ -50,111 +45,73 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash && \
 
 # ===== Kubernetes & OpenShift =====
 
-# Install kubectl
-RUN ARCH=$(dpkg --print-architecture) && \
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/${ARCH}/kubectl" && \
+# Install Kubernetes tools (kubectl, helm, k9s, kubectx/kubens, kustomize, stern)
+RUN set -ex && \
+    # kubectl
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
     install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
     rm kubectl && \
-    kubectl version --client
-
-# Install Helm
-RUN ARCH=$(dpkg --print-architecture) && \
+    kubectl version --client && \
+    # helm
     HELM_VERSION=$(curl -s https://api.github.com/repos/helm/helm/releases/latest | grep tag_name | cut -d '"' -f 4) && \
-    curl -LO "https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" && \
-    tar -zxvf "helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" && \
-    mv linux-${ARCH}/helm /usr/local/bin/helm && \
-    rm -rf linux-${ARCH} "helm-${HELM_VERSION}-linux-${ARCH}.tar.gz" && \
-    helm version
-
-# Install k9s
-RUN ARCH=$(dpkg --print-architecture) && \
-    K9S_ARCH=$([ "$ARCH" = "amd64" ] && echo "amd64" || echo "arm64") && \
-    wget -q https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_${K9S_ARCH}.tar.gz && \
-    tar -xzf k9s_Linux_${K9S_ARCH}.tar.gz -C /usr/local/bin k9s && \
-    rm k9s_Linux_${K9S_ARCH}.tar.gz && \
-    k9s version
-
-# Install kubectx and kubens
-RUN wget -q https://github.com/ahmetb/kubectx/releases/latest/download/kubectx -O /usr/local/bin/kubectx && \
+    curl -LO "https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz" && \
+    tar -zxvf "helm-${HELM_VERSION}-linux-amd64.tar.gz" && \
+    mv linux-amd64/helm /usr/local/bin/helm && \
+    rm -rf linux-amd64 "helm-${HELM_VERSION}-linux-amd64.tar.gz" && \
+    helm version && \
+    # k9s
+    wget -q https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz && \
+    tar -xzf k9s_Linux_amd64.tar.gz -C /usr/local/bin k9s && \
+    rm k9s_Linux_amd64.tar.gz && \
+    k9s version && \
+    # kubectx and kubens
+    wget -q https://github.com/ahmetb/kubectx/releases/latest/download/kubectx -O /usr/local/bin/kubectx && \
     wget -q https://github.com/ahmetb/kubectx/releases/latest/download/kubens -O /usr/local/bin/kubens && \
-    chmod +x /usr/local/bin/kubectx /usr/local/bin/kubens
-
-# Install kustomize
-RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && \
+    chmod +x /usr/local/bin/kubectx /usr/local/bin/kubens && \
+    # kustomize
+    curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash && \
     mv kustomize /usr/local/bin/ && \
-    kustomize version
-
-# Install stern (log viewer)
-RUN ARCH=$(dpkg --print-architecture) && \
+    kustomize version && \
+    # stern
     STERN_VERSION=$(curl -s https://api.github.com/repos/stern/stern/releases/latest | grep tag_name | cut -d '"' -f 4) && \
-    wget -q https://github.com/stern/stern/releases/download/${STERN_VERSION}/stern_${STERN_VERSION#v}_linux_${ARCH}.tar.gz && \
-    tar -xzf stern_${STERN_VERSION#v}_linux_${ARCH}.tar.gz && \
+    wget -q https://github.com/stern/stern/releases/download/${STERN_VERSION}/stern_${STERN_VERSION#v}_linux_amd64.tar.gz && \
+    tar -xzf stern_${STERN_VERSION#v}_linux_amd64.tar.gz && \
     mv stern /usr/local/bin/stern && \
-    rm stern_${STERN_VERSION#v}_linux_${ARCH}.tar.gz && \
-    chmod +x /usr/local/bin/stern
+    rm stern_${STERN_VERSION#v}_linux_amd64.tar.gz && \
+    chmod +x /usr/local/bin/stern && \
+    stern --version
 
-# Install OpenShift CLI (oc) - Temporarily disabled due to build issues
-# TODO: Re-enable once we can debug the installation
-# RUN ARCH=$(dpkg --print-architecture) && \
-#     if [ "$ARCH" = "amd64" ]; then \
-#         OC_ARCH="x86_64"; \
-#     elif [ "$ARCH" = "arm64" ]; then \
-#         OC_ARCH="arm64"; \
-#     fi && \
-#     OC_VERSION=$(curl -s https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/release.txt | grep 'Name:' | awk '{print $2}') && \
-#     wget -q https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux-${OC_ARCH}.tar.gz && \
-#     tar -xzf openshift-client-linux-${OC_ARCH}.tar.gz && \
-#     mv oc /usr/local/bin/ && \
-#     rm -f openshift-client-linux-${OC_ARCH}.tar.gz kubectl README.md && \
-#     oc version --client
+# Install OpenShift tools (oc and openshift-install)
+RUN set -ex && \
+    # OpenShift CLI (oc)
+    curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux.tar.gz && \
+    tar -xzf openshift-client-linux.tar.gz && \
+    mv oc /usr/local/bin/ && \
+    rm -rf openshift-client-linux.tar.gz kubectl README.md && \
+    oc version --client && \
+    # OpenShift Installer
+    curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-install-linux.tar.gz && \
+    tar -xzf openshift-install-linux.tar.gz && \
+    mv openshift-install /usr/local/bin/ && \
+    rm -rf openshift-install-linux.tar.gz && \
+    openshift-install version
 
-# Install OpenShift Installer - Temporarily disabled due to build issues
-# TODO: Re-enable once we can debug the installation
-# RUN ARCH=$(dpkg --print-architecture) && \
-#     if [ "$ARCH" = "amd64" ]; then \
-#         OC_ARCH="x86_64"; \
-#     elif [ "$ARCH" = "arm64" ]; then \
-#         OC_ARCH="arm64"; \
-#     fi && \
-#     wget -q https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-install-linux-${OC_ARCH}.tar.gz && \
-#     tar -xzf openshift-install-linux-${OC_ARCH}.tar.gz && \
-#     mv openshift-install /usr/local/bin/ && \
-#     rm -f openshift-install-linux-${OC_ARCH}.tar.gz README.md && \
-#     openshift-install version
+# Install Terraform and related tools (terraform, tflint, tfsec)
+ARG TERRAFORM_VERSION="1.7.5"
+ARG TERRAFORM_PLATFORM="linux_amd64"
 
-# ===== Infrastructure as Code =====
-
-# Install Terraform
-RUN ARCH=$(dpkg --print-architecture) && \
-    TERRAFORM_VERSION=$(curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | grep tag_name | cut -d '"' -f 4 | sed 's/v//') && \
-    wget -q https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip && \
-    unzip terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip && \
+RUN set -ex && \
+    # Terraform
+    curl -LO "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_${TERRAFORM_PLATFORM}.zip" && \
+    unzip "terraform_${TERRAFORM_VERSION}_${TERRAFORM_PLATFORM}.zip" && \
     mv terraform /usr/local/bin/ && \
-    rm terraform_${TERRAFORM_VERSION}_linux_${ARCH}.zip && \
-    terraform version
-
-# Install OpenTofu
-RUN ARCH=$(dpkg --print-architecture) && \
-    TOFU_VERSION=$(curl -s https://api.github.com/repos/opentofu/opentofu/releases/latest | grep tag_name | cut -d '"' -f 4 | sed 's/v//') && \
-    wget -q https://github.com/opentofu/opentofu/releases/download/v${TOFU_VERSION}/tofu_${TOFU_VERSION}_linux_${ARCH}.zip && \
-    unzip tofu_${TOFU_VERSION}_linux_${ARCH}.zip && \
-    mv tofu /usr/local/bin/ && \
-    rm tofu_${TOFU_VERSION}_linux_${ARCH}.zip && \
-    tofu version
-
-# Install Terragrunt
-RUN ARCH=$(dpkg --print-architecture) && \
-    wget -q https://github.com/gruntwork-io/terragrunt/releases/latest/download/terragrunt_linux_${ARCH} -O /usr/local/bin/terragrunt && \
-    chmod +x /usr/local/bin/terragrunt && \
-    terragrunt --version
-
-# Install tflint
-RUN curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash && \
-    tflint --version
-
-# Install tfsec
-RUN ARCH=$(dpkg --print-architecture) && \
-    wget -q https://github.com/aquasecurity/tfsec/releases/latest/download/tfsec-linux-${ARCH} -O /usr/local/bin/tfsec && \
+    rm "terraform_${TERRAFORM_VERSION}_${TERRAFORM_PLATFORM}.zip" && \
+    terraform version && \
+    # tflint
+    curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash && \
+    tflint --version && \
+    # tfsec
+    wget -q https://github.com/aquasecurity/tfsec/releases/latest/download/tfsec-linux-amd64 -O /usr/local/bin/tfsec && \
     chmod +x /usr/local/bin/tfsec && \
     tfsec --version
 
@@ -164,7 +121,7 @@ RUN ARCH=$(dpkg --print-architecture) && \
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | \
     gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg && \
     chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && \
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | \
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | \
     tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
     apt-get update && \
     apt-get install -y gh && \
