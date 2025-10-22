@@ -10,9 +10,7 @@ RUN dnf update -y && \
     gh \
     python3 \
     python3-pip \
-    unzip \
     less \
-    vim \
     jq \
     tar \
     gzip && \

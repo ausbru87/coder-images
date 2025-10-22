@@ -5,6 +5,8 @@ SHELL ["/bin/bash", "-c"]
 # Install essential packages only
 RUN dnf update -y && \
     dnf install -y --skip-broken \
+    curl \
+    ca-certificates \
     wget \
     git \
     sudo \
