@@ -23,6 +23,12 @@ ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
+# Fix /etc/bashrc unbound variable issue for scripts using 'set -u'
+# UBI9's /etc/bashrc references BASHRCSOURCED without checking if it's set
+# This causes failures in scripts that use 'set -u' (exit on unbound variables)
+RUN sed -i '12s/.*/if [ -z "${BASHRCSOURCED:-}" ]; then BASHRCSOURCED=Y; fi/' /etc/bashrc || \
+    echo 'BASHRCSOURCED=${BASHRCSOURCED:-Y}' >> /etc/bashrc
+
 # Add user coder
 RUN useradd coder \
     --create-home \
